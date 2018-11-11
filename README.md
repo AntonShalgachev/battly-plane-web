@@ -1,1 +1,1 @@
-# battly-plane-web
+# Our glorious game
