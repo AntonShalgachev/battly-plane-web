@@ -10,22 +10,37 @@
 
 const {ccclass, property} = cc._decorator;
 
+import MathHelper = require("Utility/MathFuckHelper.js");
+
 @ccclass
 export default class NewClass extends cc.Component {
 
-    @property(cc.Label)
-    label: cc.Label = null;
-
     @property
-    text: string = 'hello';
+    torqueFactor: number = 0.0;
+    @property
+    maxTorque: number = 0.0;
 
-    // LIFE-CYCLE CALLBACKS:
+    body: cc.RigidBody = null;
 
-    // onLoad () {}
+    onLoad () {
+    	this.body = this.getComponent(cc.RigidBody);
+    	console.assert(this.body != null, "No rigid body available");
+    }
 
     start () {
 
     }
 
-    // update (dt) {}
+    update (dt) {
+    	let angle = this.node.rotation;
+    	let targetAngle = 0.0;
+
+    	let targetTorque = (targetAngle - angle) * this.torqueFactor;
+
+    	let vel = this.body.linearVelocity.mag();
+    	let torque = Math.min(targetTorque * vel, this.maxTorque);
+
+    	console.log(angle, torque);
+    	this.body.applyTorque(torque, true);
+    }
 }

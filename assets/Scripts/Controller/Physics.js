@@ -12,6 +12,9 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
+        debugDraw: {
+            default: false,
+        },
         drawAABB: {
             default: false,
         },
@@ -32,16 +35,20 @@ cc.Class({
     getDebugFlags () {
         let flags = 0;
 
-        if (this.drawAABB)
-            flags |= cc.PhysicsManager.DrawBits.e_aabbBit;
-        if (this.drawPair)
-            flags |= cc.PhysicsManager.DrawBits.e_pairBit;
-        if (this.drawCenterOfMass)
-            flags |= cc.PhysicsManager.DrawBits.e_centerOfMassBit;
-        if (this.drawJoint)
-            flags |= cc.PhysicsManager.DrawBits.e_jointBit;
-        if (this.drawShape)
-            flags |= cc.PhysicsManager.DrawBits.e_shapeBit;
+        if (this.debugDraw) {
+            if (this.drawAABB)
+                flags |= cc.PhysicsManager.DrawBits.e_aabbBit;
+            if (this.drawPair)
+                flags |= cc.PhysicsManager.DrawBits.e_pairBit;
+            if (this.drawCenterOfMass)
+                flags |= cc.PhysicsManager.DrawBits.e_centerOfMassBit;
+            if (this.drawJoint)
+                flags |= cc.PhysicsManager.DrawBits.e_jointBit;
+            if (this.drawShape)
+                flags |= cc.PhysicsManager.DrawBits.e_shapeBit;
+        }
+
+        return flags;
     },
 
     onLoad () {

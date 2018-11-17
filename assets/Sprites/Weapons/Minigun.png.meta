@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "90f2c42a-af48-49f8-96e3-984da916786f",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "Minigun": {
+      "ver": "1.0.3",
+      "uuid": "9491a0f3-d0a0-4bc9-b076-b2439d1cbf9b",
+      "rawTextureUuid": "90f2c42a-af48-49f8-96e3-984da916786f",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 84,
+      "height": 63,
+      "rawWidth": 84,
+      "rawHeight": 63,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
