@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "lib": [ "dom", "es5", "es6", "es2015.promise" ],
+    "target": "es6",
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "baseUrl": "./assets/Scripts",
+    "outDir": "./temp/CompiledJs"
+  },
+  "exclude": [
+    "node_modules",
+    "library",
+    "local",
+    "temp",
+    "build",
+    "settings"
+  ]
+}

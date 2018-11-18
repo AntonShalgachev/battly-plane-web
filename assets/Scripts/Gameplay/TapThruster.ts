@@ -10,6 +10,8 @@
 
 const {ccclass, property} = cc._decorator;
 
+import FuelTank from "Gameplay/FuelTank";
+
 @ccclass
 export default class TapThruster extends cc.Component {
 
@@ -45,6 +47,7 @@ export default class TapThruster extends cc.Component {
 
     start () {
     	this.body = this.getComponent(cc.RigidBody);
+        this.fuelTank = this.getComponent(FuelTank);
     }
 
     isActionKey (code: number) {
@@ -78,8 +81,11 @@ export default class TapThruster extends cc.Component {
 
         let speed = this.body.linearVelocity.y;
 
-    	if (this.keysDown > 0 && speed < this.maxSpeed)
-    		this.body.applyForceToCenter(cc.v2(0.0, this.upwardForce  * dt), true);
+    	if (this.keysDown > 0 && speed < this.maxSpeed && !this.fuelTank.isEmpty()) {
+            let force = this.upwardForce * dt;
+    		this.body.applyForceToCenter(cc.v2(0.0, force), true);
+            this.fuelTank.burn(this.fuelConsumptionPerNewton * force);
+        }
 
     	let height = this.node.y;
     	if (height > this.shutdownHeight)

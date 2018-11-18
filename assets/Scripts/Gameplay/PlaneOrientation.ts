@@ -10,10 +10,10 @@
 
 const {ccclass, property} = cc._decorator;
 
-import MathHelper = require("Utility/MathFuckHelper.js");
+import MathHelper = require("Utility/MathHelper");
 
 @ccclass
-export default class NewClass extends cc.Component {
+export default class PlaneOrientation extends cc.Component {
 
     @property
     torqueFactor: number = 0.0;
@@ -33,14 +33,19 @@ export default class NewClass extends cc.Component {
 
     update (dt) {
     	let angle = this.node.rotation;
+        let vel = Math.abs(this.body.linearVelocity.x);
+        let angVel = this.body.angularVelocity;
+
+        angle += 0.25 * angVel;
+
     	let targetAngle = 0.0;
 
-    	let targetTorque = (targetAngle - angle) * this.torqueFactor;
+        let closestArc = MathHelper.closestArc(angle, targetAngle);
+    	let targetTorque = closestArc * this.torqueFactor;
 
-    	let vel = this.body.linearVelocity.mag();
-    	let torque = Math.min(targetTorque * vel, this.maxTorque);
+    	let torque = MathHelper.clampMagnitude(targetTorque * vel, this.maxTorque);
 
-    	console.log(angle, torque);
-    	this.body.applyTorque(torque, true);
+        console.log(torque);
+    	this.body.applyTorque(-torque, true);
     }
 }

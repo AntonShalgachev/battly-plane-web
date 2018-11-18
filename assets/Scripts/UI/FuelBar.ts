@@ -13,32 +13,34 @@ const {ccclass, property} = cc._decorator;
 import FuelTank from "Gameplay/FuelTank";
 
 @ccclass
-export default class ForwardThruster extends cc.Component {
+export default class FuelBar extends cc.Component {
 
-    @property
-    targetSpeed: number = 0;
-    @property
-    relativeForce: number = 0;
-    @property
-    maxForce: number = 0;
-    @property
-    fuelConsumptionPerNewton: number = 0;
+    @property(FuelTank)
+    tank: FuelTank = null;
+    @property(cc.Node)
+    unlimitedNode: cc.Node = null;
 
-    body: cc.RigidBody;
-    tank: FuelTank;
+    bar: cc.ProgressBar = null;
 
     onLoad () {
-    	this.body = this.getComponent(cc.RigidBody);
-        this.tank = this.getComponent(FuelTank);
+    	this.bar = this.getComponent(cc.ProgressBar);
     }
 
-    update (dt) {
-    	let speed = this.body.linearVelocity.x;
-    	let force = Math.min(this.relativeForce * (this.targetSpeed - speed), this.maxForce) * dt;
+    update () {
+    	if (!this.tank)
+    		return;
 
-        if (!this.tank.isEmpty()) {
-    	    this.body.applyForceToCenter(cc.v2(force, 0.0), true);
-            this.tank.burn(this.fuelConsumptionPerNewton * force);
+        let unlimited = this.tank.unlimited;
+    	
+        if (unlimited) {
+            this.bar.progress = 1.0;
+        } else {
+        	let val = this.tank.level;
+        	let max = this.tank.capacity;
+
+        	this.bar.progress = val / max;
         }
+
+        this.unlimitedNode.active = unlimited;
     }
 }

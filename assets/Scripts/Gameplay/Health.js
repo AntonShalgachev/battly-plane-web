@@ -8,7 +8,7 @@
 //  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/en/scripting/life-cycle-callbacks.html
 
-import MathHelper from 'MathHelper.js';
+import MathHelper from 'MathHelperJs.js';
 
 cc.Class({
     extends: cc.Component,
