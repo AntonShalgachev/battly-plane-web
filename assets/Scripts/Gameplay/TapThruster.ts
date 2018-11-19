@@ -11,6 +11,7 @@
 const {ccclass, property} = cc._decorator;
 
 import FuelTank from "Gameplay/FuelTank";
+import InputController from "Controller/InputController"
 
 @ccclass
 export default class TapThruster extends cc.Component {
@@ -30,19 +31,18 @@ export default class TapThruster extends cc.Component {
     fuelTank: FuelTank;
     cooldown: number;
 
-    pressedKeys: Set<number> = new Set<number>();
     keysDown: number = 0;
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-    	cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
-    	cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
+    	cc.systemEvent.on(InputController.EVENT_KEY_DOWN, this.onKeyDown, this);
+    	cc.systemEvent.on(InputController.EVENT_KEY_UP, this.onKeyUp, this);
     }
 
     onDestroy () {
-    	cc.systemEvent.off(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
-    	cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
+    	cc.systemEvent.off(InputController.EVENT_KEY_DOWN, this.onKeyDown, this);
+    	cc.systemEvent.off(InputController.EVENT_KEY_UP, this.onKeyUp, this);
     }
 
     start () {
@@ -60,15 +60,13 @@ export default class TapThruster extends cc.Component {
     }
 
     onKeyDown (e: cc.Event.EventKeyboard) {
-    	if (this.isActionKey(e.keyCode) && !this.pressedKeys.has(e.keyCode)) {
-    		this.pressedKeys.add(e.keyCode);
+    	if (this.isActionKey(e.keyCode)) {
     		this.keysDown++;
     	}
     }
 
     onKeyUp (e: cc.Event.EventKeyboard) {
     	if (this.isActionKey(e.keyCode)) {
-    		this.pressedKeys.delete(e.keyCode);
     		this.keysDown--;
     	}
     }

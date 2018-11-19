@@ -45,7 +45,6 @@ export default class PlaneOrientation extends cc.Component {
 
     	let torque = MathHelper.clampMagnitude(targetTorque * vel, this.maxTorque);
 
-        console.log(torque);
     	this.body.applyTorque(-torque, true);
     }
 }

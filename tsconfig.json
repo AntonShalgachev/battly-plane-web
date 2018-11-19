@@ -6,7 +6,8 @@
     "experimentalDecorators": true,
     "skipLibCheck": true,
     "baseUrl": "./assets/Scripts",
-    "outDir": "./temp/CompiledJs"
+    "outDir": "./temp/CompiledJs",
+    "downlevelIteration": true
   },
   "exclude": [
     "node_modules",
