@@ -11,6 +11,7 @@
 const {ccclass, property} = cc._decorator;
 
 import FuelTank from "Gameplay/FuelTank";
+import InputController from "Controller/InputController";
 
 @ccclass
 export default class ForwardThruster extends cc.Component {
@@ -26,13 +27,28 @@ export default class ForwardThruster extends cc.Component {
 
     body: cc.RigidBody;
     tank: FuelTank;
+    tapped: boolean = false;
 
     onLoad () {
-    	this.body = this.getComponent(cc.RigidBody);
+        cc.systemEvent.on(InputController.EVENT_KEY_DOWN, this.onKeyDown, this);
+
+        this.body = this.getComponent(cc.RigidBody);
         this.tank = this.getComponent(FuelTank);
     }
 
+    onDestroy () {
+        cc.systemEvent.off(InputController.EVENT_KEY_DOWN, this.onKeyDown, this);
+    }
+
+    onKeyDown (e: cc.Event.EventKeyboard) {
+        if (e.keyCode == cc.macro.KEY.space)
+            this.tapped = true;
+    }
+
     update (dt) {
+        if (!this.tapped)
+            return;
+
     	let speed = this.body.linearVelocity.x;
     	let force = Math.min(this.relativeForce * (this.targetSpeed - speed), this.maxForce) * dt;
 

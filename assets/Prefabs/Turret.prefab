@@ -62,8 +62,8 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": 1181,
-      "y": 221,
+      "x": 2591,
+      "y": 205,
       "z": 0
     },
     "_scale": {
@@ -223,7 +223,7 @@
     "projectilePrefab": {
       "__uuid__": "754d135f-2450-423c-9cbb-f3f47a377303"
     },
-    "reloadSpeed": 0.5,
+    "reloadSpeed": 2,
     "projectileSpeed": 1000,
     "nodeGroup": "enemy_projectile",
     "weaponActive": true,
@@ -302,7 +302,7 @@
       "__id__": 1
     },
     "_enabled": true,
-    "maxHealth": 10,
+    "maxHealth": 50,
     "parentHealth": null,
     "_id": ""
   },
