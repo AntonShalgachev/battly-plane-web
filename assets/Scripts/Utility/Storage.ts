@@ -24,10 +24,8 @@ function IsISerializable(object: any): object is ISerializable {
 }
 
 @ccclass
-export class Storage extends cc.Component {
-	private constructor(){ 
-		super();
-	}
+export class Storage {
+	private constructor(){}
 
 	public static gameSave() {
     	Storage.loopISerializables(Storage.trySaveNode);

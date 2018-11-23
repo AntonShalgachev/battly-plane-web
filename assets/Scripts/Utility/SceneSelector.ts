@@ -8,19 +8,40 @@
 //  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import {Singleton} from "Utility/Singleton";
-
 const {ccclass, property} = cc._decorator;
 
 @ccclass
-export default class PersistNode extends Singleton{
+export default class SceneSelector extends cc.Component {
 
-    @property
-    isPersist: boolean = true;
+	public gotoNext(){
 
-    onStart () {
-		if(!cc.Game.isPersistRootNode(this.node) && this.isPersist){
-			cc.Game.addPersistRootNode(this.node);
-		}
+	}
+
+	public gotoPrevious(){
+
+	}
+
+	public gotoByName(name: string){
+
+	}
+
+	private getScene(){
+		cc.director.getScene()
+	}
+
+	getSceneName: function() {
+    //console.log(cc.game._sceneInfos)
+    //console.log(cc.director._scene._id)
+    var sceneName
+    var _sceneInfos = cc.game._sceneInfos
+    for (var i = 0; i < _sceneInfos.length; i++) {
+        if(_sceneInfos[i].uuid == cc.director._scene._id) {
+            sceneName = _sceneInfos[i].url
+            sceneName = sceneName.substring(sceneName.lastIndexOf('/')+1).match(/[^\.]+/)[0]
+        }
+
     }
+
+    return sceneName
+}
 }

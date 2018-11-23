@@ -8,7 +8,7 @@
 //  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import * as Storage from "Global/Storage";
+import * as Storage from "Utility/Storage";
 
 type PlaneData = {
 	Engine: number;
@@ -44,12 +44,14 @@ export default class GlobalHandler extends cc.Component implements Storage.ISeri
 
 	// API
 
-	getData(){
+	public getData(){
 		return this.data;
 	}
-	setData(data: GameData){
+	
+	public setData(data: GameData){
 		this.data = data;
 	}
+
 	// Events callbacks 
 
 	onNeedSave () {
