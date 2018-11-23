@@ -8,40 +8,71 @@
 //  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
 
+export enum TransitionEfx {
+  None,
+  Fade
+}
+
 const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default class SceneSelector extends cc.Component {
 
-	public gotoNext(){
-
-	}
-
-	public gotoPrevious(){
-
-	}
-
-	public gotoByName(name: string){
-
-	}
-
-	private getScene(){
-		cc.director.getScene()
-	}
-
-	getSceneName: function() {
-    //console.log(cc.game._sceneInfos)
-    //console.log(cc.director._scene._id)
-    var sceneName
-    var _sceneInfos = cc.game._sceneInfos
-    for (var i = 0; i < _sceneInfos.length; i++) {
-        if(_sceneInfos[i].uuid == cc.director._scene._id) {
-            sceneName = _sceneInfos[i].url
-            sceneName = sceneName.substring(sceneName.lastIndexOf('/')+1).match(/[^\.]+/)[0]
+	public gotoScene(event: cc.Event, scene: string){
+        //scene: string, efx: TransitionEfx = TransitionEfx.None
+        //cc.log("goto scene - " + event);
+        //cc.log("goto data - " + scene);
+        let canvas = cc.Canvas.instance;
+        if(canvas != null){
+            let node = canvas.node;
+            node.runAction(cc.sequence( 
+                cc.fadeOut(1.0),
+                cc.callFunc(function () {
+                    cc.director.loadScene(scene, function(){
+                        let canvas = cc.Canvas.instance;
+                        if(canvas != null){
+                            let node = canvas.node;
+                            node.opacity = 0; 
+                            node.runAction(cc.fadeIn(1.0));
+                        }
+                    })
+                })
+            ));
         }
+        //cc.director.loadScene(scene);
+        /*let efx = TransitionEfx.None; 
+        switch(efx){
+            case TransitionEfx.Fade:
+                let canvas = cc.Canvas.instance;
+                if(canvas != null){
+                    let node = canvas.node;
+                    node.runAction(cc.sequence( 
+                        cc.fadeOut(1.0),
+                        cc.callFunc(function () {
+                            cc.director.loadScene(scene, function(){
+                                let canvas = cc.Canvas.instance;
+                                if(canvas != null){
+                                    let node = canvas.node;
+                                    node.runAction(cc.fadeIn(1.0));
+                                }
+                            })
+                        })
+                    ));
+                }
+            default:
+                cc.director.loadScene(scene);
+        }*/
+	}
 
-    }
-
-    return sceneName
-}
+    /*private fadeInOut(dir: boolean, callback: (str: string) => void){
+        let canvas = cc.Canvas.instance;
+        if(canvas != null){
+            if(dir){
+                cc.fadeOut(1.0)
+            }
+            else{
+                cc.fadeIn(1.0)
+            }
+        }
+    }*/
 }
