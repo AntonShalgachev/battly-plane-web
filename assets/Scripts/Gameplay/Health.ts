@@ -11,14 +11,19 @@ export default class Health extends cc.Component {
     parentHealth: Health = null;
 
 	health: number = 0.0;
+    attackedNodes: Array<cc.Node> = [];
 
     public static EVENT_HEALTH_DEPLETED: string = "Health.health_depleted";
 
-    public takeDamage (damage: number) {
+    public takeDamage (damage: number, attacker: cc.Node) {
         if (this.parentHealth)
-            return this.parentHealth.takeDamage(damage);
+            return this.parentHealth.takeDamage(damage, attacker);
+
+        if (attacker != null && this.attackedNodes.indexOf(attacker) >= 0)
+            return;
 
         this.updateHealth(this.health - damage);
+        this.attackedNodes.push(attacker);
     }
 
     public isAlive () {
@@ -39,5 +44,9 @@ export default class Health extends cc.Component {
 
     start () {
         this.health = this.maxHealth;
+    }
+
+    update () {
+        this.attackedNodes = [];
     }
 }

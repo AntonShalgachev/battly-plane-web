@@ -12,7 +12,7 @@ export default class OnCollisionDestroyer extends cc.Component {
 		let health = otherCollider.getComponent(Health);
 
 		if (health) {
-			health.takeDamage(this.instantDamage);
+			health.takeDamage(this.instantDamage, this.node);
 		}
 
 		this.node.destroy();
