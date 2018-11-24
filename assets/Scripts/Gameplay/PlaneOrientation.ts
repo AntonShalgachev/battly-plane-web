@@ -11,6 +11,7 @@
 const {ccclass, property} = cc._decorator;
 
 import MathHelper = require("Utility/MathHelper");
+import GameOverController from "Controller/GameOverController";
 
 @ccclass
 export default class PlaneOrientation extends cc.Component {
@@ -23,6 +24,10 @@ export default class PlaneOrientation extends cc.Component {
     body: cc.RigidBody = null;
 
     onLoad () {
+        cc.systemEvent.on(GameOverController.EVENT_GAME_OVER, () => {
+            this.enabled = false;
+        });
+        
     	this.body = this.getComponent(cc.RigidBody);
     	console.assert(this.body != null, "No rigid body available");
     }

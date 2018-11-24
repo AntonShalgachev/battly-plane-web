@@ -2,6 +2,7 @@ const {ccclass, property} = cc._decorator;
 
 import InputController from "Controller/InputController";
 import ProjectileShooter from "Gameplay/ProjectileShooter";
+import GameOverController from "Controller/GameOverController";
 
 @ccclass
 export default class GunInputController extends cc.Component {
@@ -10,7 +11,13 @@ export default class GunInputController extends cc.Component {
 	@property
 	actionKey: number = 0;
 
+    onDis
+
     onLoad () {
+        cc.systemEvent.on(GameOverController.EVENT_GAME_OVER, () => {
+            this.enabled = false;
+        });
+        
     	cc.systemEvent.on(InputController.EVENT_KEY_DOWN, this.onKeyDown, this);
     	cc.systemEvent.on(InputController.EVENT_KEY_UP, this.onKeyUp, this);
     }
@@ -29,13 +36,13 @@ export default class GunInputController extends cc.Component {
     }
 
     onKeyDown (e: cc.Event.EventKeyboard) {
-    	if (this.isActionKey(e.keyCode)) {
+    	if (this.isActionKey(e.keyCode) && this.enabled) {
     		this.setWeaponActive(true);
     	}
     }
 
     onKeyUp (e: cc.Event.EventKeyboard) {
-    	if (this.isActionKey(e.keyCode)) {
+    	if (this.isActionKey(e.keyCode) && this.enabled) {
     		this.setWeaponActive(false);
     	}
     }

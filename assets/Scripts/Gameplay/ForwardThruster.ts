@@ -12,6 +12,7 @@ const {ccclass, property} = cc._decorator;
 
 import FuelTank from "Gameplay/FuelTank";
 import InputController from "Controller/InputController";
+import GameOverController from "Controller/GameOverController";
 
 @ccclass
 export default class ForwardThruster extends cc.Component {
@@ -31,6 +32,10 @@ export default class ForwardThruster extends cc.Component {
 
     onLoad () {
         cc.systemEvent.on(InputController.EVENT_KEY_DOWN, this.onKeyDown, this);
+
+        cc.systemEvent.on(GameOverController.EVENT_GAME_OVER, () => {
+            this.enabled = false;
+        });
 
         this.body = this.getComponent(cc.RigidBody);
         this.tank = this.getComponent(FuelTank);

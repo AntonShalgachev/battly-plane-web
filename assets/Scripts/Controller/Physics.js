@@ -57,6 +57,7 @@ cc.Class({
         physicsManager.debugDrawFlags = this.getDebugFlags();
         physicsManager.enabledAccumulator = true;
         physicsManager.FIXED_TIME_STEP = 1/30;
+        physicsManager.PTM_RATIO = 100;
 
         let collisionManager = cc.director.getCollisionManager();
         collisionManager.enabled = true;
