@@ -47,6 +47,7 @@ export default class GunInputController extends cc.Component {
     }
 
     setWeaponActive(isActive: boolean) {
-    	this.shooter.weaponActive = isActive;
+        if (this.shooter)
+    	    this.shooter.weaponActive = isActive;
     }
 }
