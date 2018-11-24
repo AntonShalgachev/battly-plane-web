@@ -20,7 +20,12 @@ export interface ISerializable {
 }
 
 function IsISerializable(object: any): object is ISerializable {
-    return true;
+    let res = (
+    	object.getID !== undefined &&
+    	object.save  !== undefined &&
+    	object.load  !== undefined
+    );
+    return res;
 }
 
 @ccclass
@@ -35,15 +40,15 @@ export class Storage {
     	Storage.loopISerializables(Storage.tryLoadNode);
 	}
 
-	private static loopISerializables(callback: (Node: cc._BaseNode) => void){
+	private static loopISerializables(callback: (node: cc._BaseNode) => void){
 		let root = cc.director.getScene();
 		if(root != null){
 			root.walk(callback, null);
 		}
 	}
 
-	private static trySaveNode(Node: cc._BaseNode){
-		let cmps = Node.getComponents(cc.Component);
+	private static trySaveNode(node: cc._BaseNode){
+		let cmps = node.getComponents(cc.Component);
 		for(let cmp of cmps){
 			if(IsISerializable(cmp)){
 				//let userData = JSON.stringify(cmp.save());
@@ -52,8 +57,8 @@ export class Storage {
 		}
 	}
 
-	private static tryLoadNode(Node: cc._BaseNode){
-		let cmps = Node.getComponents(cc.Component);
+	private static tryLoadNode(node: cc._BaseNode){
+		let cmps = node.getComponents(cc.Component);
 		for(let cmp of cmps){
 			if(IsISerializable(cmp)){
 				let userData = cc.sys.localStorage.getItem(cmp.getID());
