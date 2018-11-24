@@ -21,6 +21,8 @@ export default class ProjectileShooter extends cc.Component {
 	reloadSpeed: number = 0.0;
 	@property
 	projectileSpeed: number = 0.0;
+	@property(cc.RigidBody)
+	parentBody: cc.RigidBody = null;
 	@property
 	nodeGroup: string = "";
 	@property
@@ -52,6 +54,8 @@ export default class ProjectileShooter extends cc.Component {
 		let body = bullet.getComponent(cc.RigidBody);
 		let angle = body.getWorldRotation();
 		let vel = cc.v2(this.projectileSpeed, 0.0).rotate(-cc.misc.degreesToRadians(angle));
+		if (this.parentBody)
+			vel.addSelf(this.parentBody.linearVelocity);
 		body.linearVelocity = vel;
 
 		// DebugHelper.logHierarchy();

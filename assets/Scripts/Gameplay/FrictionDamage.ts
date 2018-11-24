@@ -82,8 +82,6 @@ export default class FrictionDamage extends cc.Component {
 			let speed = data.getSpeed();
 			let damage = speed * this.damageFactor * dt;
 
-			cc.log(`Speed ${speed}, damage ${damage}`);
-
 			data.health.takeDamage(damage, this.node);
 		}
 	}

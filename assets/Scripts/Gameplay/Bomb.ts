@@ -9,6 +9,12 @@ export default class Bomb extends cc.Component {
 	instantDamage: number = 0.0;
 	@property
 	radius: number = 0.0;
+	@property([cc.String])
+	collidableGroups: string[] = [];
+
+	isCollidable (node: cc.Node) {
+		return this.collidableGroups.indexOf(node.group) >= 0;
+	}
 
 	onBeginContact (contact: cc.PhysicsContact, selfCollider: cc.Collider, otherCollider: cc.Collider) {
 		let pos = this.getComponent(cc.RigidBody).getWorldCenter();
@@ -19,7 +25,9 @@ export default class Bomb extends cc.Component {
 
 		for (var i = collideres.length - 1; i >= 0; i--) {
 			let collider = collideres[i];
-			cc.log(collider.node);
+			if (!this.isCollidable(collider.node))
+				continue;
+
 			let health = collider.getComponent(Health);
 			if (health)
 				health.takeDamage(this.instantDamage, this.node);

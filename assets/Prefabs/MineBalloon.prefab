@@ -30,7 +30,7 @@
       }
     ],
     "_active": true,
-    "_level": 2,
+    "_level": 1,
     "_components": [],
     "_prefab": {
       "__id__": 29
@@ -55,8 +55,8 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": 1235,
-      "y": 329,
+      "x": 2076,
+      "y": 1196,
       "z": 0
     },
     "_scale": {
@@ -356,6 +356,10 @@
     "_enabled": true,
     "instantDamage": 100,
     "radius": 500,
+    "collidableGroups": [
+      "player",
+      "enemy"
+    ],
     "_id": ""
   },
   {

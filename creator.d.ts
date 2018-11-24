@@ -2399,6 +2399,9 @@ declare module cc {
 		@param node The node to be checked 
 		*/
 		static isPersistRootNode(node: Node): boolean;	
+
+		collisionMatrix: Array<Array<boolean>>;
+		groupList: Array<string>;
 	}	
 	/** !#en
 	Class of all entities in Cocos Creator scenes.<br/>
