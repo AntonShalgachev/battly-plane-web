@@ -32,11 +32,11 @@ function IsISerializable(object: any): object is ISerializable {
 export class Storage {
 	private constructor(){}
 
-	public static gameSave() {
+	public static gameSave(){
     	Storage.loopISerializables(Storage.trySaveNode);
 	}
 
-	public static gameLoad() {
+	public static gameLoad(){
     	Storage.loopISerializables(Storage.tryLoadNode);
 	}
 

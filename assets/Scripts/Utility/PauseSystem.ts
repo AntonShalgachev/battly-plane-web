@@ -27,12 +27,12 @@ export class PauseSystem {
 	public static isPaused(): boolean {
     	return this.paused;
 	}
-	public static gamePause() {
+	public static gamePause(){
     	this.paused = true;
     	PauseSystem.loopIPausables(PauseSystem.tryPauseNode);
 	}
 
-	public static gameResume() {
+	public static gameResume(){
     	this.paused = false;
     	PauseSystem.loopIPausables(PauseSystem.tryResumeNode);
 	}

@@ -14,11 +14,17 @@ type PlaneData = {
 	Engine: number;
 };
 
+type OptionsData = {
+	Sound: boolean;
+	Music: boolean;
+};
+
 type GameData = {
 	playerID: 			string;
 	playerCash: 		string;
 	missionCheckPoints: Array<number>;
 	planeData:			PlaneData;
+	optionsData:		OptionsData;
 };
 
 const {ccclass, property} = cc._decorator;
@@ -33,13 +39,13 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
     private data: GameData;
     private static instance: GlobalHandler;
 
-	onLoad () {
+	onLoad(){
 		GlobalHandler.instance = this;
 		this.node.on(GlobalHandler.EVENT_NEED_SAVE, this.onNeedSave, this);
 		this.node.on(GlobalHandler.EVENT_NEED_LOAD, this.onNeedLoad, this);
 	}
 
-	onDestroy () {
+	onDestroy(){
 		this.node.off(GlobalHandler.EVENT_NEED_SAVE, this.onNeedSave, this);
 		this.node.off(GlobalHandler.EVENT_NEED_LOAD, this.onNeedLoad, this);
 	}
@@ -54,18 +60,34 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
 		this.data = data;
 	}
 
-	static getInstance() {
+	public getPlaneData(){
+		return this.data.planeData;
+	}
+	
+	public setPlaneData(data: PlaneData){
+		this.data.planeData = data;
+	}
+
+	public getOptionsData(){
+		return this.data.optionsData;
+	}
+	
+	public setOptionsData(data: OptionsData){
+		this.data.optionsData = data;
+	}
+
+	static getInstance(){
 		// little singleton feel
 		return GlobalHandler.instance;
 	}
 	
 	// Events callbacks 
 
-	onNeedSave () {
+	onNeedSave(){
 		Storage.Storage.gameSave();
 	}
 
-	onNeedLoad () {
+	onNeedLoad(){
 		Storage.Storage.gameLoad();
 	}
 
