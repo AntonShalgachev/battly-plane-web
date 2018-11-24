@@ -11,11 +11,10 @@ export default class GunInputController extends cc.Component {
 	@property
 	actionKey: number = 0;
 
-    onDis
-
     onLoad () {
         cc.systemEvent.on(GameOverController.EVENT_GAME_OVER, () => {
             this.enabled = false;
+            this.setWeaponActive(false);
         });
         
     	cc.systemEvent.on(InputController.EVENT_KEY_DOWN, this.onKeyDown, this);
