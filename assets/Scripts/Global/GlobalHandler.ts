@@ -24,15 +24,17 @@ type GameData = {
 const {ccclass, property} = cc._decorator;
 
 @ccclass
-export default class GlobalHandler extends cc.Component implements Storage.ISerializable {
+export class GlobalHandler extends cc.Component implements Storage.ISerializable {
 
     public static EVENT_NEED_SAVE: string = "Global.need_save";
     public static EVENT_NEED_LOAD: string = "Global.need_load";
     public static SAVE_ID:		   string = "GlobalHandler";
 
-    private data: GameData; 
+    private data: GameData;
+    private static instance: GlobalHandler;
 
 	onLoad () {
+		GlobalHandler.instance = this;
 		this.node.on(GlobalHandler.EVENT_NEED_SAVE, this.onNeedSave, this);
 		this.node.on(GlobalHandler.EVENT_NEED_LOAD, this.onNeedLoad, this);
 	}
@@ -52,6 +54,11 @@ export default class GlobalHandler extends cc.Component implements Storage.ISeri
 		this.data = data;
 	}
 
+	static getInstance() {
+		// little singleton feel
+		return GlobalHandler.instance;
+	}
+	
 	// Events callbacks 
 
 	onNeedSave () {

@@ -8,19 +8,17 @@
 //  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import {Singleton} from "Utility/Singleton";
-
 const {ccclass, property} = cc._decorator;
 
 @ccclass
-export default class PersistNode extends Singleton{
+export default class PersistNode extends cc.Component {
 
     @property
     isPersist: boolean = true;
 
-    onStart () {
-		if(!cc.Game.isPersistRootNode(this.node) && this.isPersist){
-			cc.Game.addPersistRootNode(this.node);
+    start () {
+		if(!cc.game.isPersistRootNode(this.node) && this.isPersist){
+			cc.game.addPersistRootNode(this.node);
 		}
     }
 }
