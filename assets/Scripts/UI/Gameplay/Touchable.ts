@@ -8,6 +8,10 @@ export default class Touchable extends cc.Component {
 	touchEndHandlers: cc.Component.EventHandler[] = [];
 	@property(cc.Node)
 	buttonSprite: cc.Node = null;
+	@property
+	buttonTargetScale: number = 0.9;
+	@property
+	transitionDuration: number = 0.05;
 
 	onLoad () {
 		cc.log(this.node.name, 'onLoad');
@@ -26,10 +30,20 @@ export default class Touchable extends cc.Component {
 
 	onTouchStart () {
 		this.invokeCallbacks(this.touchStartHandlers);
+
+		if (this.buttonSprite) {
+			let scaleAnimation = cc.scaleTo(this.transitionDuration, this.buttonTargetScale);
+			this.buttonSprite.runAction(scaleAnimation);
+		}
 	}
 
 	onTouchEnd () {
 		this.invokeCallbacks(this.touchEndHandlers);
+
+		if (this.buttonSprite) {
+			let scaleAnimation = cc.scaleTo(this.transitionDuration, 1.0);
+			this.buttonSprite.runAction(scaleAnimation);
+		}
 	}
 
 	invokeCallbacks (callbacks: cc.Component.EventHandler[]) {
