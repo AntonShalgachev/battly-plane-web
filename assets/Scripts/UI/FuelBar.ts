@@ -32,15 +32,7 @@ export default class FuelBar extends cc.Component {
 
         let unlimited = this.tank.unlimited;
     	
-        if (unlimited) {
-            this.bar.progress = 1.0;
-        } else {
-        	let val = this.tank.level;
-        	let max = this.tank.capacity;
-
-        	this.bar.progress = val / max;
-        }
-
+        this.bar.progress = unlimited ? 1.0 : this.tank.getProgress();
         this.unlimitedNode.active = unlimited;
     }
 }

@@ -12,27 +12,36 @@ const {ccclass, property} = cc._decorator;
 
 import MathHelper = require("Utility/MathHelper");
 
-
 @ccclass
-export default class NewClass extends cc.Component {
+export default class FuelTank extends cc.Component {
 
-    @property
-    capacity: number = 0.0;
-    @property
-    unlimited: boolean = false;
+	@property
+	capacity: number = 0.0;
+	@property
+	unlimited: boolean = false;
 
-    level: number = 0.0;
+	level: number = 0.0;
 
-    burn (amount) {
-        if (!this.unlimited)
-    	    this.level = MathHelper.clamp(this.level - amount, 0.0, this.capacity);
-    }
+	public static EVENT_FUEL_DEPLETED: string = "FuelTank.fuel_depleted";
 
-    isEmpty () {
-    	return !this.unlimited && this.level <= 0.0;
-    }
+	public burn (amount) {
+		if (this.unlimited)
+			return;
+		
+		this.level = MathHelper.clamp(this.level - amount, 0.0, this.capacity);
+		if (this.isEmpty())
+            this.node.emit(FuelTank.EVENT_FUEL_DEPLETED);
+	}
 
-    start () {
-    	this.level = this.capacity;
-    }
+	public isEmpty () {
+		return !this.unlimited && this.level <= 0.0;
+	}
+
+	public getProgress() {
+		return this.level / this.capacity;
+	}
+
+	start () {
+		this.level = this.capacity;
+	}
 }
