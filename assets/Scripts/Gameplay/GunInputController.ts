@@ -2,7 +2,7 @@ const {ccclass, property} = cc._decorator;
 
 import InputController from "Controller/InputController";
 import ProjectileShooter from "Gameplay/ProjectileShooter";
-import GameOverController from "Controller/GameOverController";
+import ScoreController from "Controller/ScoreController";
 
 @ccclass
 export default class GunInputController extends cc.Component {
@@ -12,7 +12,7 @@ export default class GunInputController extends cc.Component {
 	actionKey: number = 0;
 
     onLoad () {
-        cc.systemEvent.on(GameOverController.EVENT_GAME_OVER, () => {
+        cc.systemEvent.on(ScoreController.EVENT_GAME_OVER, () => {
             this.enabled = false;
             this.setWeaponActive(false);
         });

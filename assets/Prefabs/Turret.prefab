@@ -21,7 +21,7 @@
       }
     ],
     "_active": true,
-    "_level": 1,
+    "_level": 3,
     "_components": [
       {
         "__id__": 11
@@ -37,10 +37,13 @@
       },
       {
         "__id__": 13
+      },
+      {
+        "__id__": 14
       }
     ],
     "_prefab": {
-      "__id__": 14
+      "__id__": 15
     },
     "_opacity": 255,
     "_color": {
@@ -62,8 +65,8 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": 2591,
-      "y": 205,
+      "x": 1631,
+      "y": -435,
       "z": 0
     },
     "_scale": {
@@ -225,8 +228,12 @@
     },
     "reloadSpeed": 2,
     "projectileSpeed": 1000,
+    "parentBody": null,
     "nodeGroup": "enemy_projectile",
     "weaponActive": true,
+    "heatPerShot": 0,
+    "heatDissipationPerSecond": 0,
+    "heatThreshold": 0,
     "_id": ""
   },
   {
@@ -379,6 +386,17 @@
       "__id__": 1
     },
     "_enabled": true,
+    "_id": ""
+  },
+  {
+    "__type__": "2d2b2LX8n5H1peXWafRjhCG",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "reward": 13,
     "_id": ""
   },
   {

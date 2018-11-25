@@ -17,7 +17,9 @@ export default class PersistNode extends cc.Component {
     isPersist: boolean = true;
 
     start(){
+    	// @ts-ignore
 		if(!cc.game.isPersistRootNode(this.node) && this.isPersist){
+    		// @ts-ignore
 			cc.game.addPersistRootNode(this.node);
 		}
     }

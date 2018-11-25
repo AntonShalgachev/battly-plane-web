@@ -2,7 +2,7 @@ const {ccclass, property} = cc._decorator;
 
 import Health from "Gameplay/Health";
 import FrictionDamageable from "Gameplay/FrictionDamageable";
-import GameOverController from "Controller/GameOverController";
+import ScoreController from "Controller/ScoreController";
 
 class Data {
 	constructor(node: cc.Node) {
@@ -38,11 +38,11 @@ export default class FrictionDamage extends cc.Component {
 	objectsInContact: Array<Data> = [];
 
     onLoad () {
-        cc.systemEvent.on(GameOverController.EVENT_GAME_OVER, this.onGameOver, this);
+        cc.systemEvent.on(ScoreController.EVENT_GAME_OVER, this.onGameOver, this);
     }
 
     onDestroy () {
-    	cc.systemEvent.off(GameOverController.EVENT_GAME_OVER, this.onGameOver, this);
+    	cc.systemEvent.off(ScoreController.EVENT_GAME_OVER, this.onGameOver, this);
     }
 
     onGameOver () {

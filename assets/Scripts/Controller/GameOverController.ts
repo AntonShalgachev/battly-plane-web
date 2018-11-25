@@ -1,7 +1,7 @@
 const {ccclass, property} = cc._decorator;
 
-import Health from "Gameplay/Health"
-import FuelTank from "Gameplay/FuelTank"
+import GameplayEvents = require("Events/GameplayEvents");
+import ScoreController from "Controller/ScoreController"
 
 @ccclass
 export default class GameOverController extends cc.Component {
@@ -9,55 +9,32 @@ export default class GameOverController extends cc.Component {
 	gameOverLabel: cc.Label = null;
 	@property(cc.Node)
 	gameOverPlate: cc.Node = null;
-	@property(cc.Node)
-	player: cc.Node = null;
 	@property({multiline: true})
 	template: string = "";
 	@property
-	distanceMultiplier: number = 1.0;
-
-	health: Health = null;
-	fuelTank: FuelTank = null;
-	initialPlayerPos: number = 0.0;
-
-	public static EVENT_GAME_OVER: string = "GameOverController.game_over";
+	distanceVisualMultiplier: number = 1.0;
 
 	onLoad () {
 		this.gameOverPlate.active = false;
-		this.player.on(Health.EVENT_HEALTH_DEPLETED, this.onPlayerDead, this);
-		this.player.on(FuelTank.EVENT_FUEL_DEPLETED, this.onPlayerDead, this);
+		cc.systemEvent.on(ScoreController.EVENT_GAME_OVER, this.onGameOver, this);
 	}
 
 	onDestroy () {
-		this.player.off(Health.EVENT_HEALTH_DEPLETED, this.onPlayerDead, this);
-		this.player.off(FuelTank.EVENT_FUEL_DEPLETED, this.onPlayerDead, this);
+		cc.systemEvent.off(ScoreController.EVENT_GAME_OVER, this.onGameOver, this);
 	}
 
-	start () {
-		this.health = this.player.getComponent(Health);
-		this.fuelTank = this.player.getComponent(FuelTank);
-
-		this.initialPlayerPos = this.getPlayerPosition();
-	}
-
-	getPlayerPosition() {
-		let body = this.player.getComponent(cc.RigidBody);
-		return body.getWorldCenter().x;
-	}
-
-	getGameoverText() {
-		let hp = 100.0 * this.health.getProgress();
-		let fuel = 100.0 * this.fuelTank.getProgress();
-		let distance = (this.getPlayerPosition() - this.initialPlayerPos) * this.distanceMultiplier;
-
-		return cc.js.formatStr(this.template, distance.toFixed(2), hp.toFixed(0), fuel.toFixed(0))
-	}
-
-	onPlayerDead () {
+	onGameOver (e: GameplayEvents.GameOver) {
 		this.gameOverPlate.active = true;
-		this.gameOverLabel.string = this.getGameoverText();
+		this.gameOverLabel.string = this.getGameoverText(e);
+	}
 
-		cc.systemEvent.emit(GameOverController.EVENT_GAME_OVER);
-		cc.log("The player is dead, long live the player!");
+	getGameoverText(e: GameplayEvents.GameOver) {
+		let hp = 100.0 * e.hpLeft;
+		let fuel = 100.0 * e.fuelLeft;
+		let distance = e.distance * this.distanceVisualMultiplier;
+		let enemyReward = e.enemyReward;
+		let finalScore = e.totalScore;
+
+		return cc.js.formatStr(this.template, distance.toFixed(2), enemyReward, hp.toFixed(0), fuel.toFixed(0), finalScore.toFixed(2));
 	}
 }
