@@ -50,6 +50,10 @@ export default class ForwardThruster extends cc.Component {
             this.tapped = true;
     }
 
+    onThrustButtonDown () {
+        this.tapped = true;
+    }
+
     update (dt) {
         if (!this.tapped)
             return;

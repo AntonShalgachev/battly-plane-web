@@ -17,7 +17,7 @@
         "__id__": 2
       },
       {
-        "__id__": 313
+        "__id__": 333
       }
     ],
     "_active": true,
@@ -44,8 +44,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.22973967099940673,
-      "y": 0.22973967099940673,
+      "x": 0.22973967099940681,
+      "y": 0.22973967099940681,
       "z": 1
     },
     "_quat": {
@@ -79,7 +79,7 @@
     "_level": 1,
     "_components": [
       {
-        "__id__": 312
+        "__id__": 332
       }
     ],
     "_prefab": null,
@@ -6933,10 +6933,10 @@
     "_level": 2,
     "_components": [
       {
-        "__id__": 310
+        "__id__": 330
       },
       {
-        "__id__": 311
+        "__id__": 331
       }
     ],
     "_prefab": null,
@@ -7010,6 +7010,9 @@
       },
       {
         "__id__": 299
+      },
+      {
+        "__id__": 319
       }
     ],
     "_active": true,
@@ -9469,7 +9472,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "GameoverLayout",
+    "_name": "Controls",
     "_objFlags": 0,
     "_parent": {
       "__id__": 236
@@ -9479,7 +9482,569 @@
         "__id__": 300
       },
       {
+        "__id__": 307
+      },
+      {
+        "__id__": 313
+      }
+    ],
+    "_active": true,
+    "_level": 4,
+    "_components": [],
+    "_prefab": null,
+    "_opacity": 128,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 1920,
+      "height": 1280
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_quat": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_zIndex": 0,
+    "groupIndex": 0,
+    "_id": "48mXq8RXFI4b0xtN8C5ihg"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "ThrustButton",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 299
+    },
+    "_children": [],
+    "_active": true,
+    "_level": 5,
+    "_components": [
+      {
+        "__id__": 301
+      },
+      {
         "__id__": 302
+      },
+      {
+        "__id__": 303
+      }
+    ],
+    "_prefab": null,
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 201,
+      "height": 200
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "x": -759.5,
+      "y": -440,
+      "z": 0
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_quat": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_zIndex": 0,
+    "groupIndex": 0,
+    "_id": "beuYp4NghINr2HYcrG0KKu"
+  },
+  {
+    "__type__": "cc.Sprite",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 300
+    },
+    "_enabled": true,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
+    "_spriteFrame": {
+      "__uuid__": "cf566955-e700-4336-ab4d-8e8274a7344d"
+    },
+    "_type": 0,
+    "_sizeMode": 1,
+    "_fillType": 0,
+    "_fillCenter": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_fillStart": 0,
+    "_fillRange": 0,
+    "_isTrimmedMode": true,
+    "_state": 0,
+    "_atlas": null,
+    "_id": "06xJHxUJxDiJG55bl/rlHS"
+  },
+  {
+    "__type__": "cc.Widget",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 300
+    },
+    "_enabled": true,
+    "alignMode": 1,
+    "_target": null,
+    "_alignFlags": 12,
+    "_left": 100,
+    "_right": 0,
+    "_top": 0,
+    "_bottom": 100,
+    "_verticalCenter": 0,
+    "_horizontalCenter": 0,
+    "_isAbsLeft": true,
+    "_isAbsRight": true,
+    "_isAbsTop": true,
+    "_isAbsBottom": true,
+    "_isAbsHorizontalCenter": true,
+    "_isAbsVerticalCenter": true,
+    "_originalWidth": 0,
+    "_originalHeight": 0,
+    "_id": "72Ut16qXxH6qD+IQtiQnTy"
+  },
+  {
+    "__type__": "cefb0shLK1DLKS3KfrHQsha",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 300
+    },
+    "_enabled": true,
+    "touchStartHandlers": [
+      {
+        "__id__": 304
+      },
+      {
+        "__id__": 305
+      }
+    ],
+    "touchEndHandlers": [
+      {
+        "__id__": 306
+      }
+    ],
+    "buttonSprite": null,
+    "_id": "1b/B65GGRIv4vsWQkmqEMn"
+  },
+  {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 40
+    },
+    "component": "TapThruster",
+    "handler": "onButtonDown",
+    "customEventData": ""
+  },
+  {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 40
+    },
+    "component": "ForwardThruster",
+    "handler": "onThrustButtonDown",
+    "customEventData": ""
+  },
+  {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 40
+    },
+    "component": "TapThruster",
+    "handler": "onButtonUp",
+    "customEventData": ""
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "MinigunButton",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 299
+    },
+    "_children": [],
+    "_active": true,
+    "_level": 5,
+    "_components": [
+      {
+        "__id__": 308
+      },
+      {
+        "__id__": 309
+      },
+      {
+        "__id__": 310
+      }
+    ],
+    "_prefab": null,
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 200,
+      "height": 200
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "x": 637.4,
+      "y": -360.2,
+      "z": 0
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_quat": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_zIndex": 0,
+    "groupIndex": 0,
+    "_id": "4fsUl4aetCk65+JzB6P4y4"
+  },
+  {
+    "__type__": "cc.Sprite",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 307
+    },
+    "_enabled": true,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
+    "_spriteFrame": {
+      "__uuid__": "48e580e0-f064-4d4c-8870-afa08c071c84"
+    },
+    "_type": 0,
+    "_sizeMode": 1,
+    "_fillType": 0,
+    "_fillCenter": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_fillStart": 0,
+    "_fillRange": 0,
+    "_isTrimmedMode": true,
+    "_state": 0,
+    "_atlas": null,
+    "_id": "82HzRixC1Hk4mAxDHWEDHY"
+  },
+  {
+    "__type__": "cc.Widget",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 307
+    },
+    "_enabled": true,
+    "alignMode": 1,
+    "_target": null,
+    "_alignFlags": 36,
+    "_left": 0,
+    "_right": 222.60000000000002,
+    "_top": 0,
+    "_bottom": 179.8,
+    "_verticalCenter": 0,
+    "_horizontalCenter": 0,
+    "_isAbsLeft": true,
+    "_isAbsRight": true,
+    "_isAbsTop": true,
+    "_isAbsBottom": true,
+    "_isAbsHorizontalCenter": true,
+    "_isAbsVerticalCenter": true,
+    "_originalWidth": 0,
+    "_originalHeight": 0,
+    "_id": "17bAg57hJAHrgRFzxOb/It"
+  },
+  {
+    "__type__": "cefb0shLK1DLKS3KfrHQsha",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 307
+    },
+    "_enabled": true,
+    "touchStartHandlers": [
+      {
+        "__id__": 311
+      }
+    ],
+    "touchEndHandlers": [
+      {
+        "__id__": 312
+      }
+    ],
+    "buttonSprite": null,
+    "_id": "a9/KWgMZRPUq8MocAQh98n"
+  },
+  {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 60
+    },
+    "component": "ProjectileShooter",
+    "handler": "setWeaponActive",
+    "customEventData": ""
+  },
+  {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 60
+    },
+    "component": "ProjectileShooter",
+    "handler": "setWeaponInctive",
+    "customEventData": ""
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "BombButton",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 299
+    },
+    "_children": [],
+    "_active": true,
+    "_level": 5,
+    "_components": [
+      {
+        "__id__": 314
+      },
+      {
+        "__id__": 315
+      },
+      {
+        "__id__": 316
+      }
+    ],
+    "_prefab": null,
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 201,
+      "height": 202
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "x": 819.5,
+      "y": -499,
+      "z": 0
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_quat": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_zIndex": 0,
+    "groupIndex": 0,
+    "_id": "3fV/nLIHxCY4yVP/hBSa2s"
+  },
+  {
+    "__type__": "cc.Sprite",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 313
+    },
+    "_enabled": true,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
+    "_spriteFrame": {
+      "__uuid__": "9cffd9ac-e365-4e14-ad99-4e1fc0ddd439"
+    },
+    "_type": 0,
+    "_sizeMode": 1,
+    "_fillType": 0,
+    "_fillCenter": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_fillStart": 0,
+    "_fillRange": 0,
+    "_isTrimmedMode": true,
+    "_state": 0,
+    "_atlas": null,
+    "_id": "64zVjNyd1AM4BVrLj0M77y"
+  },
+  {
+    "__type__": "cc.Widget",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 313
+    },
+    "_enabled": true,
+    "alignMode": 1,
+    "_target": null,
+    "_alignFlags": 36,
+    "_left": 0,
+    "_right": 40,
+    "_top": 0,
+    "_bottom": 40,
+    "_verticalCenter": 0,
+    "_horizontalCenter": 0,
+    "_isAbsLeft": true,
+    "_isAbsRight": true,
+    "_isAbsTop": true,
+    "_isAbsBottom": true,
+    "_isAbsHorizontalCenter": true,
+    "_isAbsVerticalCenter": true,
+    "_originalWidth": 0,
+    "_originalHeight": 0,
+    "_id": "b8aeiZeuFCmZscpbZXFZMZ"
+  },
+  {
+    "__type__": "cefb0shLK1DLKS3KfrHQsha",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 313
+    },
+    "_enabled": true,
+    "touchStartHandlers": [
+      {
+        "__id__": 317
+      }
+    ],
+    "touchEndHandlers": [
+      {
+        "__id__": 318
+      }
+    ],
+    "buttonSprite": null,
+    "_id": "97U2vUFAJKPbMHv86xaa+1"
+  },
+  {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 62
+    },
+    "component": "ProjectileShooter",
+    "handler": "setWeaponActive",
+    "customEventData": ""
+  },
+  {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 62
+    },
+    "component": "ProjectileShooter",
+    "handler": "setWeaponInctive",
+    "customEventData": ""
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "GameoverLayout",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 236
+    },
+    "_children": [
+      {
+        "__id__": 320
+      },
+      {
+        "__id__": 322
       }
     ],
     "_active": false,
@@ -9536,14 +10101,14 @@
     "_name": "BackgroundTint",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 299
+      "__id__": 319
     },
     "_children": [],
     "_active": true,
     "_level": 5,
     "_components": [
       {
-        "__id__": 301
+        "__id__": 321
       }
     ],
     "_prefab": null,
@@ -9597,7 +10162,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 300
+      "__id__": 320
     },
     "_enabled": true,
     "_srcBlendFactor": 770,
@@ -9625,21 +10190,21 @@
     "_name": "Background",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 299
+      "__id__": 319
     },
     "_children": [
       {
-        "__id__": 303
+        "__id__": 323
       },
       {
-        "__id__": 306
+        "__id__": 326
       }
     ],
     "_active": true,
     "_level": 5,
     "_components": [
       {
-        "__id__": 309
+        "__id__": 329
       }
     ],
     "_prefab": null,
@@ -9693,17 +10258,17 @@
     "_name": "GameoverText",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 302
+      "__id__": 322
     },
     "_children": [],
     "_active": true,
     "_level": 6,
     "_components": [
       {
-        "__id__": 304
+        "__id__": 324
       },
       {
-        "__id__": 305
+        "__id__": 325
       }
     ],
     "_prefab": null,
@@ -9757,7 +10322,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 303
+      "__id__": 323
     },
     "_enabled": true,
     "_srcBlendFactor": 1,
@@ -9782,7 +10347,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 303
+      "__id__": 323
     },
     "_enabled": true,
     "alignMode": 1,
@@ -9809,17 +10374,17 @@
     "_name": "RestartText",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 302
+      "__id__": 322
     },
     "_children": [],
     "_active": true,
     "_level": 6,
     "_components": [
       {
-        "__id__": 307
+        "__id__": 327
       },
       {
-        "__id__": 308
+        "__id__": 328
       }
     ],
     "_prefab": null,
@@ -9873,7 +10438,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 306
+      "__id__": 326
     },
     "_enabled": true,
     "_srcBlendFactor": 1,
@@ -9898,12 +10463,12 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 306
+      "__id__": 326
     },
     "_enabled": true,
     "alignMode": 1,
     "_target": {
-      "__id__": 302
+      "__id__": 322
     },
     "_alignFlags": 20,
     "_left": 0,
@@ -9927,7 +10492,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 302
+      "__id__": 322
     },
     "_enabled": true,
     "_srcBlendFactor": 770,
@@ -10016,19 +10581,19 @@
     "_level": 1,
     "_components": [
       {
-        "__id__": 314
+        "__id__": 334
       },
       {
-        "__id__": 315
+        "__id__": 335
       },
       {
-        "__id__": 316
+        "__id__": 336
       },
       {
-        "__id__": 317
+        "__id__": 337
       },
       {
-        "__id__": 318
+        "__id__": 338
       }
     ],
     "_prefab": null,
@@ -10082,7 +10647,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 313
+      "__id__": 333
     },
     "_enabled": true,
     "_id": "d2+7+IhRlB37NfDWzuozQ7"
@@ -10092,7 +10657,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 313
+      "__id__": 333
     },
     "_enabled": true,
     "_id": "18aum6+LBHOYx9qc6lTxYl"
@@ -10102,14 +10667,14 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 313
+      "__id__": 333
     },
     "_enabled": true,
     "gameOverLabel": {
-      "__id__": 304
+      "__id__": 324
     },
     "gameOverPlate": {
-      "__id__": 299
+      "__id__": 319
     },
     "template": "Game over!\nDistance: %s m\nEnemy reward: %d\nHealth left: %s%\nFuel left: %s%\n\nFinal score: %s",
     "distanceVisualMultiplier": 0.02,
@@ -10120,7 +10685,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 313
+      "__id__": 333
     },
     "_enabled": true,
     "debugDraw": true,
@@ -10136,7 +10701,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 313
+      "__id__": 333
     },
     "_enabled": true,
     "player": {

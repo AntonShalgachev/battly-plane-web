@@ -56,6 +56,14 @@ export default class ProjectileShooter extends cc.Component {
 		this.updateHeat(this.heat - this.heatDissipationPerSecond * dt);
 	}
 
+	public setWeaponActive () {
+		this.weaponActive = true;
+	}
+
+	public setWeaponInctive () {
+		this.weaponActive = false;
+	}
+
 	private shoot () {
 		// TODO antonsh use NodePool
 		let bullet = cc.instantiate(this.projectilePrefab);

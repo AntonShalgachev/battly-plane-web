@@ -1,13 +1,3 @@
-// Learn TypeScript:
-//  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/typescript.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/typescript.html
-// Learn Attribute:
-//  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/reference/attributes.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
-//  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
-
 const {ccclass, property} = cc._decorator;
 
 import FuelTank from "Gameplay/FuelTank";
@@ -33,8 +23,7 @@ export default class TapThruster extends cc.Component {
     cooldown: number;
 
     keysDown: number = 0;
-
-    // LIFE-CYCLE CALLBACKS:
+    buttonsDown: number = 0;
 
     onLoad () {
     	cc.systemEvent.on(InputController.EVENT_KEY_DOWN, this.onKeyDown, this);
@@ -76,6 +65,18 @@ export default class TapThruster extends cc.Component {
     	}
     }
 
+    onButtonDown() {
+        this.buttonsDown++;
+    }
+
+    onButtonUp() {
+        this.buttonsDown--;
+    }
+
+    isKeyOrButtonDown() {
+        return this.keysDown > 0 || this.buttonsDown > 0;
+    }
+
     update (dt) {
         this.cooldown -= dt;
 
@@ -84,7 +85,7 @@ export default class TapThruster extends cc.Component {
 
         let speed = this.body.linearVelocity.y;
 
-    	if (this.keysDown > 0 && speed < this.maxSpeed && !this.fuelTank.isEmpty()) {
+    	if (this.isKeyOrButtonDown() && speed < this.maxSpeed && !this.fuelTank.isEmpty()) {
             let force = this.upwardForce * dt;
     		this.body.applyForceToCenter(cc.v2(0.0, force), true);
             this.fuelTank.burn(this.fuelConsumptionPerNewton * force);
