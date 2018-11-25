@@ -44,8 +44,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.11251461564569296,
-      "y": 0.11251461564569296,
+      "x": 0.16471820345351457,
+      "y": 0.16471820345351457,
       "z": 1
     },
     "_quat": {
@@ -9923,22 +9923,6 @@
     "_id": "37cn8EDxtJb6URl84xa8fL"
   },
   {
-    "__type__": "2418fWCRTpK2qzI25OCpftj",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 307
-    },
-    "_enabled": true,
-    "debugDraw": true,
-    "drawAABB": false,
-    "drawPair": false,
-    "drawCenterOfMass": true,
-    "drawJoint": true,
-    "drawShape": true,
-    "_id": "29ZSXd5EtIqp+3SR2nmnwH"
-  },
-  {
     "__type__": "d7747UecGFNf6FuWKS9nteA",
     "_name": "",
     "_objFlags": 0,
@@ -9978,5 +9962,21 @@
     "template": "Game over!\nDistance: %s km\nHealth left: %s%\nFuel left: %s%",
     "distanceMultiplier": 0.001,
     "_id": "5ea80ujfZMuZ1okOhZHYn0"
+  },
+  {
+    "__type__": "ab3ad/dmYtD155lxXSpx4gK",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 307
+    },
+    "_enabled": true,
+    "debugDraw": true,
+    "drawAABB": false,
+    "drawPair": false,
+    "drawCenterOfMass": true,
+    "drawJoint": true,
+    "drawShape": true,
+    "_id": "0bgM4K93NHDqXabOABHH7w"
   }
 ]
