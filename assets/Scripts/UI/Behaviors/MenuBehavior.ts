@@ -11,7 +11,7 @@
 const {ccclass, property} = cc._decorator;
 
 @ccclass
-export default class MenuBehavior extends cc.Component {
+export class MenuBehavior extends cc.Component {
 
     @property(cc.Button)
     closeButton: cc.Button = null;

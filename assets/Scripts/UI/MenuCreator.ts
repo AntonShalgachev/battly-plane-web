@@ -7,25 +7,38 @@
 // Learn life-cycle callbacks:
 //  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
+import {MenuBehavior} from "UI/Behaviors/MenuBehavior";
 
 const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default class MenuCreator extends cc.Component {
 
-    @property(cc.Label)
-    label: cc.Label = null;
+    @property(cc.Prefab)
+	menuPrefab: cc.Prefab = null;
+	@property(cc.Node)
+	menuParentNode: cc.Node = null;
 
-    @property
-    text: string = 'hello';
+	private menuInst: MenuBehavior = null;
 
-    // LIFE-CYCLE CALLBACKS:
-
-    // onLoad () {}
-
-    start () {
-
+    onLoad(){
+    	if(this.menuPrefab != null){
+			let menu 		= cc.instantiate(this.menuPrefab);
+			if(this.menuParentNode != null)
+			{
+				menu.parent	= this.menuParentNode;
+			}
+			else{
+				menu.parent = this.node;
+			}
+			this.menuInst  	= menu.getComponent(MenuBehavior);
+			menu.active 	= false;
+    	}
     }
 
-    // update (dt) {}
+    public openMenuCallback(){
+    	if(this.menuInst != null){
+    		this.menuInst.openCallback();
+    	}
+    }
 }
