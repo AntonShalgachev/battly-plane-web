@@ -17,9 +17,6 @@ export default class NewClass extends cc.Component {
     	if (!this.health)
     		return;
     	
-        let val = this.health.health;
-    	let max = this.health.maxHealth;
-
-    	this.bar.progress = val / max;
+    	this.bar.progress = this.health.getProgress();
     }
 }

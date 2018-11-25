@@ -58,8 +58,8 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": 1607,
-      "y": 272,
+      "x": 532,
+      "y": 369,
       "z": 0
     },
     "_scale": {
@@ -154,7 +154,7 @@
     },
     "_enabled": true,
     "instantDamage": 50,
-    "radius": 1000,
+    "radius": 100,
     "collidableGroups": [
       "player",
       "enemy"

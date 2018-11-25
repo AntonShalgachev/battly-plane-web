@@ -11,6 +11,7 @@
 const {ccclass, property} = cc._decorator;
 
 import DebugHelper = require("Utility/DebugHelper");
+import MathHelper = require("Utility/MathHelper");
 
 @ccclass
 export default class ProjectileShooter extends cc.Component {
@@ -59,5 +60,9 @@ export default class ProjectileShooter extends cc.Component {
 		body.linearVelocity = vel;
 
 		// DebugHelper.logHierarchy();
+	}
+
+	public getProgress () {
+		return 1.0 - this.cooldown / this.reloadSpeed;
 	}
 }
