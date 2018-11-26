@@ -13,6 +13,7 @@ const {ccclass, property} = cc._decorator;
 import FuelTank from "Gameplay/FuelTank";
 import InputController from "Controller/InputController";
 import ScoreController from "Controller/ScoreController";
+import MathHelper = require("Utility/MathHelper");
 
 @ccclass
 export default class ForwardThruster extends cc.Component {
@@ -25,6 +26,8 @@ export default class ForwardThruster extends cc.Component {
     maxForce: number = 0;
     @property
     fuelConsumptionPerNewton: number = 0;
+    @property
+    maxAngleDeviation: number = 0.0;
 
     body: cc.RigidBody;
     tank: FuelTank;
@@ -56,6 +59,13 @@ export default class ForwardThruster extends cc.Component {
 
     update (dt) {
         if (!this.tapped)
+            return;
+
+        let angle = this.body.getWorldRotation();
+
+        let deviation = Math.abs(MathHelper.closestArc(0.0, angle));
+
+        if (deviation > this.maxAngleDeviation)
             return;
 
     	let speed = this.body.linearVelocity.x;

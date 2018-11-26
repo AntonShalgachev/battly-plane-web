@@ -44,8 +44,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.19453098948245695,
-      "y": 0.19453098948245695,
+      "x": 0.42578125,
+      "y": 0.42578125,
       "z": 1
     },
     "_quat": {
@@ -1627,7 +1627,7 @@
       "__id__": 40
     },
     "_enabled": true,
-    "maxHealth": 100,
+    "maxHealth": 10000,
     "parentHealth": null,
     "_id": "2fmuSjrCdC4av6mf+uX12z"
   },
@@ -2254,6 +2254,7 @@
     "relativeForce": 50,
     "maxForce": 5000,
     "fuelConsumptionPerNewton": 0.01,
+    "maxAngleDeviation": 59.5,
     "_id": "2e7yyYYAtGDq4R4y8ChJkM"
   },
   {
