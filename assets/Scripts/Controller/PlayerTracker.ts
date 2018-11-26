@@ -20,9 +20,7 @@ export default class PlayerTracker extends cc.Component {
     @property
     offset: number = 0.0;
 
-    // LIFE-CYCLE CALLBACKS:
-
-    update (dt) {
+    lateUpdate () {
     	if (!this.player)
     		return;
 
