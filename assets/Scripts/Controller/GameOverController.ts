@@ -9,13 +9,22 @@ export default class GameOverController extends cc.Component {
 	gameOverLabel: cc.Label = null;
 	@property(cc.Node)
 	gameOverPlate: cc.Node = null;
+	@property(cc.Label)
+	checkpointReachedLabel: cc.Label = null;
+	@property(cc.Node)
+	checkpointReachedPlate: cc.Node = null;
 	@property({multiline: true})
 	template: string = "";
+	@property
+	gameOverHeader: string = "Game over!"
+	@property
+	checkpointReachedHeader: string = "Checkpoint reached!"
 	@property
 	distanceVisualMultiplier: number = 1.0;
 
 	onLoad () {
 		this.gameOverPlate.active = false;
+		this.checkpointReachedPlate.active = false;
 		cc.systemEvent.on(ScoreController.EVENT_GAME_OVER, this.onGameOver, this);
 	}
 
@@ -24,8 +33,14 @@ export default class GameOverController extends cc.Component {
 	}
 
 	onGameOver (e: GameplayEvents.GameOver) {
-		this.gameOverPlate.active = true;
-		this.gameOverLabel.string = this.getGameoverText(e);
+		cc.warn(e);
+		let won = e.won;
+
+		let plate = won ? this.checkpointReachedPlate : this.gameOverPlate;
+		let label = won ? this.checkpointReachedLabel : this.gameOverLabel;
+
+		plate.active = true;
+		label.string = this.getGameoverText(e);
 	}
 
 	getGameoverText(e: GameplayEvents.GameOver) {
@@ -34,7 +49,8 @@ export default class GameOverController extends cc.Component {
 		let distance = e.distance * this.distanceVisualMultiplier;
 		let enemyReward = e.enemyReward;
 		let finalScore = e.totalScore;
+		let header = e.won ? this.checkpointReachedHeader : this.gameOverHeader;
 
-		return cc.js.formatStr(this.template, distance.toFixed(2), enemyReward, hp.toFixed(0), fuel.toFixed(0), finalScore.toFixed(2));
+		return cc.js.formatStr(this.template, header, distance.toFixed(2), enemyReward, hp.toFixed(0), fuel.toFixed(0), finalScore.toFixed(2));
 	}
 }

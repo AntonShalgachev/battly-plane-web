@@ -3,6 +3,7 @@ const {ccclass, property} = cc._decorator;
 import FuelTank from "Gameplay/FuelTank";
 import InputController from "Controller/InputController";
 import ScoreController from "Controller/ScoreController";
+import Checkpoint from "Gameplay/Checkpoint"
 
 @ccclass
 export default class TapThruster extends cc.Component {
@@ -17,6 +18,8 @@ export default class TapThruster extends cc.Component {
     shutdownDuration: number = 0.0;
     @property
     fuelConsumptionPerNewton: number = 0.0;
+    @property
+    checkpointUpwardForce: number = 0;
 
     body: cc.RigidBody;
     fuelTank: FuelTank;
@@ -24,10 +27,12 @@ export default class TapThruster extends cc.Component {
 
     keysDown: number = 0;
     buttonsDown: number = 0;
+    checkpointReached: boolean = false;
 
     onLoad () {
     	cc.systemEvent.on(InputController.EVENT_KEY_DOWN, this.onKeyDown, this);
     	cc.systemEvent.on(InputController.EVENT_KEY_UP, this.onKeyUp, this);
+        cc.systemEvent.on(Checkpoint.EVENT_CHECKPOINT_REACHED, this.onCheckpointReached, this);
 
         cc.systemEvent.on(ScoreController.EVENT_GAME_OVER, () => {
             this.enabled = false;
@@ -37,6 +42,7 @@ export default class TapThruster extends cc.Component {
     onDestroy () {
     	cc.systemEvent.off(InputController.EVENT_KEY_DOWN, this.onKeyDown, this);
     	cc.systemEvent.off(InputController.EVENT_KEY_UP, this.onKeyUp, this);
+        cc.systemEvent.off(Checkpoint.EVENT_CHECKPOINT_REACHED, this.onCheckpointReached, this);
     }
 
     start () {
@@ -73,6 +79,10 @@ export default class TapThruster extends cc.Component {
         this.buttonsDown--;
     }
 
+    onCheckpointReached () {
+        this.checkpointReached = true;
+    }
+
     isKeyOrButtonDown() {
         return this.keysDown > 0 || this.buttonsDown > 0;
     }
@@ -82,6 +92,12 @@ export default class TapThruster extends cc.Component {
 
         if (this.cooldown > 0.0)
             return;
+
+        if (this.checkpointReached) {
+            let force = this.checkpointUpwardForce * dt;
+            this.body.applyForceToCenter(cc.v2(0.0, force), true);
+            return;
+        }
 
         let speed = this.body.linearVelocity.y;
 

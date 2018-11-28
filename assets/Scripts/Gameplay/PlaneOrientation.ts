@@ -12,6 +12,7 @@ const {ccclass, property} = cc._decorator;
 
 import MathHelper = require("Utility/MathHelper");
 import ScoreController from "Controller/ScoreController";
+import GameplayEvents = require("Events/GameplayEvents");
 
 @ccclass
 export default class PlaneOrientation extends cc.Component {
@@ -24,8 +25,8 @@ export default class PlaneOrientation extends cc.Component {
     body: cc.RigidBody = null;
 
     onLoad () {
-        cc.systemEvent.on(ScoreController.EVENT_GAME_OVER, () => {
-            this.enabled = false;
+        cc.systemEvent.on(ScoreController.EVENT_GAME_OVER, (e: GameplayEvents.GameOver) => {
+            this.enabled = e.won;
         });
         
     	this.body = this.getComponent(cc.RigidBody);
