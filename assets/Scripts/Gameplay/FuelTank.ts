@@ -11,6 +11,7 @@
 const {ccclass, property} = cc._decorator;
 
 import MathHelper = require("Utility/MathHelper");
+import {GlobalHandler, PlanePartTypes} from "Global/GlobalHandler";
 
 @ccclass
 export default class FuelTank extends cc.Component {
@@ -42,6 +43,14 @@ export default class FuelTank extends cc.Component {
 	}
 
 	start () {
+		let handler = GlobalHandler.getInstance();
+		if (handler) {
+			let data = handler.getPlanePartData(PlanePartTypes.tank);
+			this.capacity = data.statPerLvl[data.currentLvl];
+		} else {
+			cc.warn('No global handler');
+		}
+
 		this.level = this.capacity;
 	}
 }

@@ -33,7 +33,6 @@ export default class GameOverController extends cc.Component {
 	}
 
 	onGameOver (e: GameplayEvents.GameOver) {
-		cc.warn(e);
 		let won = e.won;
 
 		let plate = won ? this.checkpointReachedPlate : this.gameOverPlate;

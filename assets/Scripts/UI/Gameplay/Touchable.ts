@@ -14,15 +14,12 @@ export default class Touchable extends cc.Component {
 	transitionDuration: number = 0.05;
 
 	onLoad () {
-		cc.log(this.node.name, 'onLoad');
-		cc.log(cc.Node.EventType.TOUCH_START);
     	this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
     	this.node.on(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this);
     	this.node.on(cc.Node.EventType.TOUCH_CANCEL, this.onTouchEnd, this);
 	}
 
 	onDestroy () {
-		cc.log(this.node.name, 'onDestroy');
     	this.node.off(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
     	this.node.off(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this);
     	this.node.off(cc.Node.EventType.TOUCH_CANCEL, this.onTouchEnd, this);
@@ -47,7 +44,6 @@ export default class Touchable extends cc.Component {
 	}
 
 	invokeCallbacks (callbacks: cc.Component.EventHandler[]) {
-		cc.log('Invoking callbacks');
 		cc.Component.EventHandler.emitEvents(callbacks);
 	}
 }

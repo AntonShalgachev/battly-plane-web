@@ -10,10 +10,13 @@
 
 import * as Storage from "Utility/Storage";
 
+import GameplayEvents = require("Events/GameplayEvents");
+import ScoreController from "Controller/ScoreController"
+
 export enum PlanePartTypes {
   none 		= 0,
-  engine 	= 1,
-  wing 		= 2
+  hull 		= 1,
+  tank 		= 2
 }
 
 export type PlanePartData = {
@@ -22,12 +25,12 @@ export type PlanePartData = {
 	maxLvl: 		number;
 	currentLvl: 	number;
 	pricePerLvl: 	Array<number>;
-	// stats per lvl?
+	statPerLvl:		Array<number>;
 };
 
 export type PlaneData = {
-	engine: PlanePartData;
-	wing: 	PlanePartData;
+	hull: PlanePartData;
+	tank: 	PlanePartData;
 };
 
 export type OptionsData = {
@@ -48,25 +51,26 @@ const {ccclass, property} = cc._decorator;
 @ccclass
 export class GlobalHandler extends cc.Component implements Storage.ISerializable {
 
-    @property
     gameData: GameData = {
     	playerID : "Demo",
     	playerCash : 1400,
     	missionCheckPoints : [0, 0, 0],
     	planeData : {
-    		engine : {
-    			name: 			"engine",
-				description: 	"engine -- engine -- engine -- engine -- engine -- engine",
+    		hull : {
+    			name: 			"Корпус",
+				description: 	"Сверхпрочные мифриловые сплавы позволяют выдержать большие повреждения",
 				maxLvl: 		5,
 				currentLvl: 	0,
-				pricePerLvl: 	[0, 100, 200, 300, 400, 500]
+				pricePerLvl: 	[0, 100, 200, 300, 400, 500],
+				statPerLvl:		[100, 110, 130, 150, 200],
     		},
-    		wing : {
-    			name: 			"wing",
-				description: 	"wing -- wing -- wing -- wing -- wing -- wing -- wing -- wing",
+    		tank : {
+    			name: 			"Топливный бак",
+				description: 	"Больший бак позволяет пролететь большие расстояния",
 				maxLvl: 		3,
 				currentLvl: 	1,
-				pricePerLvl: 	[0, 100, 200, 300, 400, 500]
+				pricePerLvl: 	[0, 100, 200, 300, 400, 500],
+				statPerLvl:		[15000, 16000, 18000, 20000, 25000],
     		}
     	},
     	optionsData : {
@@ -74,6 +78,9 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
     		music: true
     	}
     };
+
+    @property
+    clearSavedData: boolean = false;
 
     public static EVENT_NEED_SAVE: 		string = "Global.need_save";
     public static EVENT_NEED_LOAD: 		string = "Global.need_load";
@@ -88,11 +95,16 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
 		this.data = this.gameData;
 		this.node.on(GlobalHandler.EVENT_NEED_SAVE, this.onNeedSave, this);
 		this.node.on(GlobalHandler.EVENT_NEED_LOAD, this.onNeedLoad, this);
+		cc.systemEvent.on(ScoreController.EVENT_GAME_OVER, this.onGameOver);
+
+		if (this.clearSavedData)
+			Storage.Storage.clear();
 	}
 
 	onDestroy(){
 		this.node.off(GlobalHandler.EVENT_NEED_SAVE, this.onNeedSave, this);
 		this.node.off(GlobalHandler.EVENT_NEED_LOAD, this.onNeedLoad, this);
+		cc.systemEvent.off(ScoreController.EVENT_GAME_OVER, this.onGameOver);
 	}
 
 	// API
@@ -123,25 +135,27 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
 
 	public getPlanePartData(partType: PlanePartTypes): PlanePartData{
 		switch(partType){
-			case PlanePartTypes.engine:
-    			//cc.log("return - " + this.data.planeData.engine.name);
-				return this.data.planeData.engine;
-			case PlanePartTypes.wing:
-    			//cc.log("return - " + this.data.planeData.wing.name);
-				return this.data.planeData.wing;
+			case PlanePartTypes.hull:
+    			//cc.log("return - " + this.data.planeData.hull.name);
+				return this.data.planeData.hull;
+			case PlanePartTypes.tank:
+    			//cc.log("return - " + this.data.planeData.tank.name);
+				return this.data.planeData.tank;
 		}
+
+		cc.warn(`Failed to get data for part type ${partType}`);
 		return null;
 	}
 	
 	public setPlanePartData(partType: PlanePartTypes, data: PlanePartData){
 		switch(partType){
-			case PlanePartTypes.engine:
-    			//cc.log("set - " + data.name + " to - " + this.data.planeData.engine.name);
-				this.data.planeData.engine = data;
+			case PlanePartTypes.hull:
+    			//cc.log("set - " + data.name + " to - " + this.data.planeData.hull.name);
+				this.data.planeData.hull = data;
 				break;
-			case PlanePartTypes.wing:
-    			//cc.log("set - " + data.name + " to - " + this.data.planeData.wing.name);
-				this.data.planeData.wing = data;
+			case PlanePartTypes.tank:
+    			//cc.log("set - " + data.name + " to - " + this.data.planeData.tank.name);
+				this.data.planeData.tank = data;
 				break;
 		}
 	}
@@ -169,6 +183,13 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
 		Storage.Storage.gameLoad();
 	}
 
+	onGameOver (e: GameplayEvents.GameOver) {
+		let handler = GlobalHandler.getInstance();
+		let cash = handler.getCash();
+		handler.setCash(cash + e.totalScore);
+		cc.systemEvent.emit(GlobalHandler.EVENT_UPDATE_DATA);
+	}
+
 	// Storage callbacks
 
 	getID(){
@@ -177,9 +198,13 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
 
 	save(){
 		return JSON.stringify(this.data);
+		cc.log("Player data saved");
 	}
 
 	load(data: string){
 		this.data = JSON.parse(data);
+
+		cc.log("Player data loaded:");
+		cc.log(this.data);
 	}
 }

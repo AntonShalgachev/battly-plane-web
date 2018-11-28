@@ -1,6 +1,7 @@
 const {ccclass, property} = cc._decorator;
 
 import MathHelper = require("Utility/MathHelper");
+import {GlobalHandler, PlanePartTypes} from "Global/GlobalHandler";
 
 
 @ccclass
@@ -54,6 +55,14 @@ export default class Health extends cc.Component {
 	}
 
 	start () {
+		let handler = GlobalHandler.getInstance();
+		if (handler) {
+			let data = handler.getPlanePartData(PlanePartTypes.hull);
+			this.maxHealth = data.statPerLvl[data.currentLvl];
+		} else {
+			cc.warn('No global handler');
+		}
+
 		this.health = this.maxHealth;
 	}
 

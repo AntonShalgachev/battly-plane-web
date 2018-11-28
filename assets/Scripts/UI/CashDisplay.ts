@@ -30,7 +30,7 @@ export default class CashDisplay extends cc.Component {
     	if(cash != null){
     		cc.log("cash = " + cash);
 	    	if(this.cashLabel != null){
-	    		this.cashLabel.string = cash.toString();
+	    		this.cashLabel.string = cash.toFixed(0);
 	    	}
 	    }
     }

@@ -57,15 +57,19 @@ export class PlanePartDisplay extends cc.Component {
     }
 
     public readGlobalData(){
-		let data = GlobalHandler.GlobalHandler.getInstance().getPlanePartData(this.partType); 
-    	if(data != null){
-	    	if(this.priceLabel != null){
-	    		this.priceLabel.string = PlaneUpdateBehavior.getNextPrice(data).toString();
-	    	}
-	    	if(this.skillBar != null){
-	    		this.skillBar.setMaxLvl(data.maxLvl);
-    			this.skillBar.setLvl(data.currentLvl);
-	    	}
-	    }
+		let data = GlobalHandler.GlobalHandler.getInstance().getPlanePartData(this.partType);
+        if (!data) {
+            cc.warn(`No data for the part type ${this.partType}`);
+            return;
+        }
+        
+    	if(this.priceLabel != null){
+    		this.priceLabel.string = PlaneUpdateBehavior.getNextPrice(data).toString();
+    	}
+
+    	if(this.skillBar != null){
+    		this.skillBar.setMaxLvl(data.maxLvl);
+			this.skillBar.setLvl(data.currentLvl);
+    	}
     }
 }

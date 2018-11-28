@@ -146,47 +146,7 @@
       "__id__": 2
     },
     "_enabled": true,
-    "gameData": {
-      "playerID": "Demo",
-      "playerCash": 1400,
-      "missionCheckPoints": [
-        0,
-        0,
-        0
-      ],
-      "planeData": {
-        "engine": {
-          "name": "engine",
-          "description": "engine -- engine -- engine -- engine -- engine -- engine",
-          "maxLvl": 5,
-          "currentLvl": 0,
-          "pricePerLvl": [
-            100,
-            200,
-            300,
-            400,
-            500
-          ]
-        },
-        "wing": {
-          "name": "wing",
-          "description": "wing -- wing -- wing -- wing -- wing -- wing -- wing -- wing",
-          "maxLvl": 3,
-          "currentLvl": 1,
-          "pricePerLvl": [
-            100,
-            200,
-            300,
-            400,
-            500
-          ]
-        }
-      },
-      "optionsData": {
-        "sound": true,
-        "music": true
-      }
-    },
+    "clearSavedData": false,
     "_id": "c20xW0Gg5IJbfxZvssMY0C"
   },
   {

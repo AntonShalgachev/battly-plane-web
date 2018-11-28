@@ -40,6 +40,12 @@ export class Storage {
     	Storage.loopISerializables(Storage.tryLoadNode);
 	}
 
+	public static clear() {
+		cc.log("Clearing local storage");
+		cc.warn(cc.sys.localStorage);
+		cc.sys.localStorage.clear();
+	}
+
 	private static loopISerializables(callback: (node: cc._BaseNode) => void){
 		let root = cc.director.getScene();
 		if(root != null){
@@ -62,6 +68,7 @@ export class Storage {
 		for(let cmp of cmps){
 			if(IsISerializable(cmp)){
 				let userData = cc.sys.localStorage.getItem(cmp.getID());
+				cc.sys.localStorage
 				cmp.load(userData);
 			}
 		}
