@@ -1924,6 +1924,7 @@
     },
     "_enabled": true,
     "maxHealth": 0,
+    "useUpgradeStats": false,
     "parentHealth": {
       "__id__": 57
     },
@@ -1938,6 +1939,7 @@
     },
     "_enabled": true,
     "maxHealth": 100,
+    "useUpgradeStats": true,
     "parentHealth": null,
     "_id": "2fmuSjrCdC4av6mf+uX12z"
   },
@@ -2100,6 +2102,7 @@
     },
     "_enabled": true,
     "maxHealth": 0,
+    "useUpgradeStats": false,
     "parentHealth": {
       "__id__": 57
     },
@@ -2264,6 +2267,7 @@
     },
     "_enabled": true,
     "maxHealth": 0,
+    "useUpgradeStats": false,
     "parentHealth": {
       "__id__": 57
     },
@@ -3024,6 +3028,7 @@
     },
     "_enabled": true,
     "maxHealth": 0,
+    "useUpgradeStats": false,
     "parentHealth": {
       "__id__": 92
     },
@@ -3038,6 +3043,7 @@
     },
     "_enabled": true,
     "maxHealth": 50,
+    "useUpgradeStats": false,
     "parentHealth": null,
     "_id": "ddxnLEjXFHmqLUxlISuxCC"
   },
@@ -3428,6 +3434,7 @@
     },
     "_enabled": true,
     "maxHealth": 0,
+    "useUpgradeStats": false,
     "parentHealth": {
       "__id__": 107
     },
@@ -3442,6 +3449,7 @@
     },
     "_enabled": true,
     "maxHealth": 50,
+    "useUpgradeStats": false,
     "parentHealth": null,
     "_id": "a87nlRpFdFHbGABaRhCwFE"
   },
@@ -3832,6 +3840,7 @@
     },
     "_enabled": true,
     "maxHealth": 0,
+    "useUpgradeStats": false,
     "parentHealth": {
       "__id__": 122
     },
@@ -3846,6 +3855,7 @@
     },
     "_enabled": true,
     "maxHealth": 50,
+    "useUpgradeStats": false,
     "parentHealth": null,
     "_id": "b9aB89U95BBqpm3YNVyRRr"
   },
@@ -4253,6 +4263,7 @@
     },
     "_enabled": true,
     "maxHealth": 10,
+    "useUpgradeStats": false,
     "parentHealth": null,
     "_id": "a0aITF2V9IM5kQMiM6gul6"
   },
@@ -4621,6 +4632,7 @@
     },
     "_enabled": true,
     "maxHealth": 20,
+    "useUpgradeStats": false,
     "parentHealth": null,
     "_id": "34weu8OQlIwb0Pp1S/p14U"
   },
@@ -4846,6 +4858,7 @@
     },
     "_enabled": true,
     "maxHealth": 20,
+    "useUpgradeStats": false,
     "parentHealth": null,
     "_id": "66x7spbadMw4vcer6jJXyg"
   },
@@ -5188,6 +5201,7 @@
     },
     "_enabled": true,
     "maxHealth": 10,
+    "useUpgradeStats": false,
     "parentHealth": null,
     "_id": "82sECRP7NIHoWWssPR3Uky"
   },
@@ -5556,6 +5570,7 @@
     },
     "_enabled": true,
     "maxHealth": 20,
+    "useUpgradeStats": false,
     "parentHealth": null,
     "_id": "f1BPadnSdJgIOtT/VWTI6o"
   },
@@ -5781,6 +5796,7 @@
     },
     "_enabled": true,
     "maxHealth": 20,
+    "useUpgradeStats": false,
     "parentHealth": null,
     "_id": "8e300ChuhPhKjqCggKLQ9w"
   },
@@ -6123,6 +6139,7 @@
     },
     "_enabled": true,
     "maxHealth": 10,
+    "useUpgradeStats": false,
     "parentHealth": null,
     "_id": "409GmLMRZO77POYVZhpglx"
   },
@@ -6491,6 +6508,7 @@
     },
     "_enabled": true,
     "maxHealth": 20,
+    "useUpgradeStats": false,
     "parentHealth": null,
     "_id": "24F74e7TZK1YR5UePAZhQ9"
   },
@@ -6716,6 +6734,7 @@
     },
     "_enabled": true,
     "maxHealth": 20,
+    "useUpgradeStats": false,
     "parentHealth": null,
     "_id": "99m3OlUSpAEpV2A33xnr/u"
   },
@@ -7058,6 +7077,7 @@
     },
     "_enabled": true,
     "maxHealth": 10,
+    "useUpgradeStats": false,
     "parentHealth": null,
     "_id": "843mO2pEpFLrC31dMwUrZ6"
   },
@@ -7426,6 +7446,7 @@
     },
     "_enabled": true,
     "maxHealth": 20,
+    "useUpgradeStats": false,
     "parentHealth": null,
     "_id": "d6C6IP0+5EmIk7s+omYZgf"
   },
@@ -7651,6 +7672,7 @@
     },
     "_enabled": true,
     "maxHealth": 20,
+    "useUpgradeStats": false,
     "parentHealth": null,
     "_id": "43T6QAvQlL2pXYwgKX0qjV"
   },

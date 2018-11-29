@@ -8,6 +8,8 @@ import {GlobalHandler, PlanePartTypes} from "Global/GlobalHandler";
 export default class Health extends cc.Component {
 	@property
 	maxHealth: number = 0.0;
+	@property
+	useUpgradeStats: boolean = false;
 	@property(Health)
 	parentHealth: Health = null;
 
@@ -54,7 +56,10 @@ export default class Health extends cc.Component {
 		}
 	}
 
-	start () {
+	updateMaxHealth () {
+		if (!this.useUpgradeStats)
+			return;
+
 		let handler = GlobalHandler.getInstance();
 		if (handler) {
 			let data = handler.getPlanePartData(PlanePartTypes.hull);
@@ -62,6 +67,10 @@ export default class Health extends cc.Component {
 		} else {
 			cc.warn('No global handler');
 		}
+	}
+
+	start () {
+		this.updateMaxHealth();
 
 		this.health = this.maxHealth;
 	}
