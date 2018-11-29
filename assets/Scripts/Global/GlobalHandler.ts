@@ -93,17 +93,18 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
 	onLoad(){
 		GlobalHandler.instance = this;
 		this.data = this.gameData;
-		this.node.on(GlobalHandler.EVENT_NEED_SAVE, this.onNeedSave, this);
-		this.node.on(GlobalHandler.EVENT_NEED_LOAD, this.onNeedLoad, this);
+		cc.systemEvent.on(GlobalHandler.EVENT_NEED_SAVE, this.onNeedSave, this);
+		cc.systemEvent.on(GlobalHandler.EVENT_NEED_LOAD, this.onNeedLoad, this);
 		cc.systemEvent.on(ScoreController.EVENT_GAME_OVER, this.onGameOver);
 
-		if (this.clearSavedData)
-			Storage.Storage.clear();
+		if (!this.clearSavedData){
+			cc.systemEvent.emit(GlobalHandler.EVENT_NEED_LOAD);
+		}
 	}
 
 	onDestroy(){
-		this.node.off(GlobalHandler.EVENT_NEED_SAVE, this.onNeedSave, this);
-		this.node.off(GlobalHandler.EVENT_NEED_LOAD, this.onNeedLoad, this);
+		cc.systemEvent.off(GlobalHandler.EVENT_NEED_SAVE, this.onNeedSave, this);
+		cc.systemEvent.off(GlobalHandler.EVENT_NEED_LOAD, this.onNeedLoad, this);
 		cc.systemEvent.off(ScoreController.EVENT_GAME_OVER, this.onGameOver);
 	}
 
@@ -136,10 +137,8 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
 	public getPlanePartData(partType: PlanePartTypes): PlanePartData{
 		switch(partType){
 			case PlanePartTypes.hull:
-    			//cc.log("return - " + this.data.planeData.hull.name);
 				return this.data.planeData.hull;
 			case PlanePartTypes.tank:
-    			//cc.log("return - " + this.data.planeData.tank.name);
 				return this.data.planeData.tank;
 		}
 
@@ -150,11 +149,9 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
 	public setPlanePartData(partType: PlanePartTypes, data: PlanePartData){
 		switch(partType){
 			case PlanePartTypes.hull:
-    			//cc.log("set - " + data.name + " to - " + this.data.planeData.hull.name);
 				this.data.planeData.hull = data;
 				break;
 			case PlanePartTypes.tank:
-    			//cc.log("set - " + data.name + " to - " + this.data.planeData.tank.name);
 				this.data.planeData.tank = data;
 				break;
 		}
@@ -175,11 +172,11 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
 	
 	// Events callbacks 
 
-	onNeedSave(){
+	onNeedSave(e: GameplayEvents.GameOver){
 		Storage.Storage.gameSave();
 	}
 
-	onNeedLoad(){
+	onNeedLoad(e: GameplayEvents.GameOver){
 		Storage.Storage.gameLoad();
 	}
 
@@ -188,6 +185,7 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
 		let cash = handler.getCash();
 		handler.setCash(cash + e.totalScore);
 		cc.systemEvent.emit(GlobalHandler.EVENT_UPDATE_DATA);
+		cc.systemEvent.emit(GlobalHandler.EVENT_NEED_SAVE);
 	}
 
 	// Storage callbacks
@@ -202,9 +200,12 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
 	}
 
 	load(data: string){
-		this.data = JSON.parse(data);
-
-		cc.log("Player data loaded:");
+		let data = JSON.parse(data);
+		if(data != null)
+		{
+			this.data = data;
+		}
+		cc.log("Player data loaded");
 		cc.log(this.data);
 	}
 }
