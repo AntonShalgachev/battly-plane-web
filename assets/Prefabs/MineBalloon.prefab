@@ -30,7 +30,7 @@
       }
     ],
     "_active": true,
-    "_level": 1,
+    "_level": 4,
     "_components": [],
     "_prefab": {
       "__id__": 29
@@ -55,8 +55,8 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": 2076,
-      "y": 1196,
+      "x": 4314,
+      "y": 524,
       "z": 0
     },
     "_scale": {
@@ -218,6 +218,8 @@
       "__id__": 2
     },
     "_enabled": true,
+    "size": 0,
+    "removalDelay": 0,
     "_id": ""
   },
   {
@@ -360,6 +362,7 @@
       "player",
       "enemy"
     ],
+    "size": 4,
     "_id": ""
   },
   {
@@ -583,6 +586,8 @@
       "__id__": 13
     },
     "_enabled": true,
+    "size": 0,
+    "removalDelay": 0,
     "_id": ""
   },
   {
@@ -806,6 +811,8 @@
       "__id__": 21
     },
     "_enabled": true,
+    "size": 0,
+    "removalDelay": 0,
     "_id": ""
   },
   {

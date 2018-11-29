@@ -58,8 +58,8 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": 820,
-      "y": 672,
+      "x": 850.1,
+      "y": 512.5,
       "z": 0
     },
     "_scale": {
@@ -176,6 +176,7 @@
     },
     "_enabled": true,
     "instantDamage": 50,
+    "size": 2,
     "_id": ""
   },
   {

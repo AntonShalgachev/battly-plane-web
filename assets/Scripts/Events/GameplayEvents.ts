@@ -34,3 +34,30 @@ export class CheckpointReached {
 	slowdownDuration: number = 0.0;
 	plateDelay: number = 0.0;
 }
+
+export class ObjectExploaded {
+	static eventName: string = "ObjectExploaded";
+
+	constructor(posOrNode: cc.Vec2 | cc.Node, type: ObjectExploaded.ExplosionType) {
+		if (posOrNode instanceof cc.Node) {
+			this.pos = posOrNode.convertToWorldSpaceAR(cc.v2(0, 0));
+			cc.log(posOrNode.name);
+		}
+		else
+			this.pos = posOrNode;
+		this.type = type;
+	}
+
+	pos: cc.Vec2;
+	type: ObjectExploaded.ExplosionType;
+}
+
+export namespace ObjectExploaded {
+	export enum ExplosionType {
+		None,
+		Tiny,
+		Small,
+		Big,
+		Huge,
+	}
+}

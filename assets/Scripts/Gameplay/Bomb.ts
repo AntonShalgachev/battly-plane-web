@@ -1,6 +1,7 @@
 const {ccclass, property} = cc._decorator;
 
 import Health from "Gameplay/Health";
+import GameplayEvents = require("Events/GameplayEvents");
 
 @ccclass
 export default class Bomb extends cc.Component {
@@ -11,6 +12,8 @@ export default class Bomb extends cc.Component {
 	radius: number = 0.0;
 	@property([cc.String])
 	collidableGroups: string[] = [];
+	@property({type: cc.Enum(GameplayEvents.ObjectExploaded.ExplosionType)})
+	size: GameplayEvents.ObjectExploaded.ExplosionType = GameplayEvents.ObjectExploaded.ExplosionType.None;
 
 	isCollidable (node: cc.Node) {
 		return this.collidableGroups.indexOf(node.group) >= 0;
@@ -33,6 +36,7 @@ export default class Bomb extends cc.Component {
 				health.takeDamage(this.instantDamage, this.node);
 		}
 
+		cc.systemEvent.emit(GameplayEvents.ObjectExploaded.eventName, new GameplayEvents.ObjectExploaded(this.node, this.size));
 		this.node.destroy();
 	}
 }

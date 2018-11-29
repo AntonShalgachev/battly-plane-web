@@ -199,8 +199,8 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
 		cc.log("Player data saved");
 	}
 
-	load(data: string){
-		let data = JSON.parse(data);
+	load(rawData: string){
+		let data = JSON.parse(rawData);
 		if(data != null)
 		{
 			this.data = data;

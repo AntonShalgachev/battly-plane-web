@@ -1,12 +1,15 @@
 const {ccclass, property} = cc._decorator;
 
 import Health from "Gameplay/Health";
+import GameplayEvents = require("Events/GameplayEvents");
 
 @ccclass
 export default class OnCollisionDestroyer extends cc.Component {
 
 	@property
 	instantDamage: number = 0.0;
+	@property({type: cc.Enum(GameplayEvents.ObjectExploaded.ExplosionType)})
+	size: GameplayEvents.ObjectExploaded.ExplosionType = GameplayEvents.ObjectExploaded.ExplosionType.None;
 
 	onBeginContact (contact: cc.PhysicsContact, selfCollider: cc.Collider, otherCollider: cc.Collider) {
 		let health = otherCollider.getComponent(Health);
@@ -15,6 +18,7 @@ export default class OnCollisionDestroyer extends cc.Component {
 			health.takeDamage(this.instantDamage, this.node);
 		}
 
+		cc.systemEvent.emit(GameplayEvents.ObjectExploaded.eventName, new GameplayEvents.ObjectExploaded(this.node, this.size));
 		this.node.destroy();
 	}
 }
