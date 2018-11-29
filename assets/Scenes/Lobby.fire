@@ -41,8 +41,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
+      "x": 0.6428107782199124,
+      "y": 0.6428107782199124,
       "z": 1
     },
     "_quat": {
@@ -338,7 +338,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "384adcba-868b-4f90-b858-a107b95f9c4a"
+      "__uuid__": "afe4958a-9872-4e64-ad8d-c6bfb3ce7e57"
     },
     "_type": 0,
     "_sizeMode": 0,
