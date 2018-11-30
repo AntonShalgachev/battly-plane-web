@@ -22,6 +22,7 @@ export default class ScoreController extends cc.Component {
 	enemyMultiplier: number = 1.0;
 
 	public static EVENT_GAME_OVER: string = "GameOverController.game_over";
+	public static EVENT_LEVEL_PASSED: string = "GameOverController.level_passed";
 
 	enemyReward: number = 0;
 
@@ -71,6 +72,9 @@ export default class ScoreController extends cc.Component {
 		let finalScore = hp * this.hpMultiplier + fuel * this.fuelMultiplier + distance * this.distanceMultiplier + this.enemyReward * this.enemyMultiplier;
 
 		cc.systemEvent.emit(ScoreController.EVENT_GAME_OVER, new GameplayEvents.GameOver(won, hp, fuel, distance, this.enemyReward, finalScore));
+		if(won){
+			cc.systemEvent.emit(ScoreController.EVENT_LEVEL_PASSED, new cc.Event("", false));
+		}
 		cc.log("The player is dead, long live the player!");
 	}
 

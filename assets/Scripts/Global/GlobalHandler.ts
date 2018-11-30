@@ -12,6 +12,7 @@ import * as Storage from "Storage";
 
 import GameplayEvents = require("GameplayEvents");
 import ScoreController from "ScoreController"
+import MathHelper 	   from "MathHelper"
 
 export enum PlanePartTypes {
   none 		= 0,
@@ -47,6 +48,8 @@ export type OptionsData = {
 export type GameData = {
 	playerID: 			string;
 	playerCash: 		number;
+	playerBestDist: 	number;
+	missionIndex: 		number;
 	missionCheckPoints: Array<number>;
 	planeData:			PlaneData;
 	optionsData:		OptionsData;
@@ -60,6 +63,8 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
     gameData: GameData = {
     	playerID : "Demo",
     	playerCash : 1400,
+    	playerBestDist : 0,
+    	missionIndex : 0,
     	missionCheckPoints : [0, 0, 0],
     	planeData : {
     		propeller : {
@@ -113,6 +118,8 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
     clearSavedData: boolean = false;
     @property([cc.SpriteFrame])
     PlanePartIcons: cc.SpriteFrame[] = [];
+    @property([cc.Scene])
+    gameLevels: cc.Scene[] = [];
 
     public static EVENT_NEED_SAVE: 		string = "Global.need_save";
     public static EVENT_NEED_LOAD: 		string = "Global.need_load";
@@ -127,6 +134,7 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
 		this.data = this.gameData;
 		cc.systemEvent.on(GlobalHandler.EVENT_NEED_SAVE, this.onNeedSave, this);
 		cc.systemEvent.on(GlobalHandler.EVENT_NEED_LOAD, this.onNeedLoad, this);
+		cc.systemEvent.on(ScoreController.EVENT_LEVEL_PASSED, this.onLvlPassed, this);
 		cc.systemEvent.on(ScoreController.EVENT_GAME_OVER, this.onGameOver);
 
 		if (!this.clearSavedData){
@@ -137,6 +145,7 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
 	onDestroy(){
 		cc.systemEvent.off(GlobalHandler.EVENT_NEED_SAVE, this.onNeedSave, this);
 		cc.systemEvent.off(GlobalHandler.EVENT_NEED_LOAD, this.onNeedLoad, this);
+		cc.systemEvent.off(ScoreController.EVENT_LEVEL_PASSED, this.onLvlPassed, this);
 		cc.systemEvent.off(ScoreController.EVENT_GAME_OVER, this.onGameOver);
 	}
 
@@ -148,6 +157,19 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
 	
 	public setCash(data: number){
 		this.data.playerCash = data;
+	}
+
+	public getMissionIndex(): number{
+		return this.data.missionIndex;
+	}
+
+	public getNextScene(): cc.Scene{
+		if(this.gameLevels != null){
+			if(this.data.missionIndex < this.gameLevels.length){
+				return this.gameLevels[this.getMissionIndex];
+			}
+		}
+		return null;
 	}
 
 	public getData(): GameData{
@@ -228,6 +250,14 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
 	}
 	
 	// Events callbacks 
+
+	onLvlPassed(e: GameplayEvents.GameOver){
+		let index = this.getMissionIndex;
+		this.getMissionIndex = MathHelper.clamp(this.getMissionIndex + 1, 0, this.gameLevels.length - 1);
+		if(index != this.getMissionIndex){
+			this.data.playerBestDist = 0;
+		}
+	}
 
 	onNeedSave(e: GameplayEvents.GameOver){
 		Storage.Storage.gameSave();
