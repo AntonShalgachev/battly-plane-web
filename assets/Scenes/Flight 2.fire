@@ -44,8 +44,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.18533205351421395,
-      "y": 0.18533205351421395,
+      "x": 0.42578125,
+      "y": 0.42578125,
       "z": 1
     },
     "_quat": {
@@ -21104,9 +21104,9 @@
     "player": {
       "__id__": 148
     },
-    "hpMultiplier": 1,
-    "fuelMultiplier": 1,
-    "distanceMultiplier": 1,
+    "hpMultiplier": 20,
+    "fuelMultiplier": 10,
+    "distanceMultiplier": 0.001,
     "enemyMultiplier": 1,
     "_id": "676C5UX29LLYZsMGAjO+bU"
   }
