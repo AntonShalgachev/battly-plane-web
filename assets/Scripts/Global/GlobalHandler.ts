@@ -15,8 +15,11 @@ import ScoreController from "Controller/ScoreController"
 
 export enum PlanePartTypes {
   none 		= 0,
-  hull 		= 1,
-  tank 		= 2
+  propeller = 1,
+  tank 		= 2,
+  gun 		= 3,
+  engine 	= 4,
+  bomb 		= 5
 }
 
 export type PlanePartData = {
@@ -29,8 +32,11 @@ export type PlanePartData = {
 };
 
 export type PlaneData = {
-	hull: PlanePartData;
-	tank: 	PlanePartData;
+	propeller: 	PlanePartData;
+	tank: 		PlanePartData;
+	gun: 		PlanePartData;
+	engine: 	PlanePartData;
+	bomb: 		PlanePartData;
 };
 
 export type OptionsData = {
@@ -56,13 +62,13 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
     	playerCash : 1400,
     	missionCheckPoints : [0, 0, 0],
     	planeData : {
-    		hull : {
-    			name: 			"Корпус",
-				description: 	"Сверхпрочные мифриловые сплавы позволяют выдержать большие повреждения",
+    		propeller : {
+    			name: 			"Пропеллер",
+				description: 	"Сверхпрочные мифриловые сплавы позволяют выдержать большие фронтальные повреждения",
 				maxLvl: 		5,
 				currentLvl: 	0,
 				pricePerLvl: 	[0, 100, 200, 300, 400, 500],
-				statPerLvl:		[100, 110, 130, 150, 200],
+				statPerLvl:		[100, 110, 130, 150, 200]
     		},
     		tank : {
     			name: 			"Топливный бак",
@@ -70,7 +76,31 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
 				maxLvl: 		3,
 				currentLvl: 	1,
 				pricePerLvl: 	[0, 100, 200, 300, 400, 500],
-				statPerLvl:		[15000, 16000, 18000, 20000, 25000],
+				statPerLvl:		[15000, 16000, 18000, 20000, 25000]
+    		},
+    		gun : {
+    			name: 			"Пулемет",
+				description: 	"Уничтожай врагов на своем пути",
+				maxLvl: 		3,
+				currentLvl: 	1,
+				pricePerLvl: 	[0, 100, 200, 300, 400, 500],
+				statPerLvl:		[15000, 16000, 18000, 20000, 25000]
+    		},
+    		engine : {
+    			name: 			"Двигатель",
+				description: 	"Чем мощнее двигатель, тем быстрее ты летишь",
+				maxLvl: 		3,
+				currentLvl: 	1,
+				pricePerLvl: 	[0, 100, 200, 300, 400, 500],
+				statPerLvl:		[15000, 16000, 18000, 20000, 25000]
+    		},
+    		bomb : {
+    			name: 			"Бомбы",
+				description: 	"Мне кажется, или внизу кто-то был?",
+				maxLvl: 		3,
+				currentLvl: 	1,
+				pricePerLvl: 	[0, 100, 200, 300, 400, 500],
+				statPerLvl:		[15000, 16000, 18000, 20000, 25000]
     		}
     	},
     	optionsData : {
@@ -81,6 +111,8 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
 
     @property
     clearSavedData: boolean = false;
+    @property([cc.SpriteFrame])
+    PlanePartIcons: cc.SpriteFrame[] = [];
 
     public static EVENT_NEED_SAVE: 		string = "Global.need_save";
     public static EVENT_NEED_LOAD: 		string = "Global.need_load";
@@ -134,12 +166,28 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
 		this.data.planeData = data;
 	}
 
+	public getPlanePartIcon(partType: PlanePartTypes): cc.SpriteFrame{
+		
+		let index = partType - 1;
+		if(index >= 0 && index < this.PlanePartIcons.length){
+			return this.PlanePartIcons[index];
+		}
+		cc.warn(`Failed to get icon for part type ${partType}`);
+		return null;
+	}
+
 	public getPlanePartData(partType: PlanePartTypes): PlanePartData{
 		switch(partType){
-			case PlanePartTypes.hull:
-				return this.data.planeData.hull;
+			case PlanePartTypes.propeller:
+				return this.data.planeData.propeller;
 			case PlanePartTypes.tank:
 				return this.data.planeData.tank;
+			case PlanePartTypes.gun:
+				return this.data.planeData.gun;
+			case PlanePartTypes.engine:
+				return this.data.planeData.engine;
+			case PlanePartTypes.bomb:
+				return this.data.planeData.bomb;
 		}
 
 		cc.warn(`Failed to get data for part type ${partType}`);
@@ -148,11 +196,20 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
 	
 	public setPlanePartData(partType: PlanePartTypes, data: PlanePartData){
 		switch(partType){
-			case PlanePartTypes.hull:
-				this.data.planeData.hull = data;
+			case PlanePartTypes.propeller:
+				this.data.planeData.propeller = data;
 				break;
 			case PlanePartTypes.tank:
 				this.data.planeData.tank = data;
+				break;
+			case PlanePartTypes.gun:
+				this.data.planeData.gun = data;
+				break;
+			case PlanePartTypes.engine:
+				this.data.planeData.engine = data;
+				break;
+			case PlanePartTypes.bomb:
+				this.data.planeData.bomb = data;
 				break;
 		}
 	}

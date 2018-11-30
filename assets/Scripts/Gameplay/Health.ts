@@ -62,7 +62,7 @@ export default class Health extends cc.Component {
 
 		let handler = GlobalHandler.getInstance();
 		if (handler) {
-			let data = handler.getPlanePartData(PlanePartTypes.hull);
+			let data = handler.getPlanePartData(PlanePartTypes.propeller);
 			this.maxHealth = data.statPerLvl[data.currentLvl];
 		} else {
 			cc.warn('No global handler');

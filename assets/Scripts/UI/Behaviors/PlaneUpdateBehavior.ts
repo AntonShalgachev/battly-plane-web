@@ -24,6 +24,8 @@ export class PlaneUpdateBehavior extends cc.Component {
     priceLabel: cc.Label 		= null;
     @property(SkillBarBehavior)
     skillBar: SkillBarBehavior 	= null;
+    @property(cc.Sprite)
+    partIcon: cc.Sprite         = null;
 
     private partData: GlobalHandler.PlanePartData;
     private partType: GlobalHandler.PlanePartTypes = GlobalHandler.PlanePartTypes.none;
@@ -37,6 +39,10 @@ export class PlaneUpdateBehavior extends cc.Component {
     	if(this.partData != null){
     		this.updateData(this.partData);
     	}
+        let icon = GlobalHandler.GlobalHandler.getInstance().getPlanePartIcon(this.partType);
+        if(icon != null){
+            this.partIcon.spriteFrame = icon;
+        }
     }
 
     public setType(type: GlobalHandler.PlanePartTypes){
