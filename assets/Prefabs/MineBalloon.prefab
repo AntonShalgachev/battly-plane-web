@@ -30,7 +30,7 @@
       }
     ],
     "_active": true,
-    "_level": 4,
+    "_level": 1,
     "_components": [],
     "_prefab": {
       "__id__": 32
@@ -55,8 +55,8 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": 1195,
-      "y": 307,
+      "x": 672,
+      "y": 580,
       "z": 0
     },
     "_scale": {
@@ -313,6 +313,7 @@
     },
     "_enabled": true,
     "maxHealth": 10,
+    "useUpgradeStats": false,
     "parentHealth": null,
     "_id": ""
   },
@@ -462,7 +463,7 @@
       "__id__": 11
     },
     "_enabled": true,
-    "instantDamage": 100,
+    "instantDamage": 2,
     "radius": 500,
     "collidableGroups": [
       "player",
@@ -681,6 +682,7 @@
     },
     "_enabled": true,
     "maxHealth": 20,
+    "useUpgradeStats": false,
     "parentHealth": null,
     "_id": ""
   },
@@ -906,6 +908,7 @@
     },
     "_enabled": true,
     "maxHealth": 20,
+    "useUpgradeStats": false,
     "parentHealth": null,
     "_id": ""
   },

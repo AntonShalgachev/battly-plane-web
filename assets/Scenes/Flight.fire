@@ -44,8 +44,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.13947436663504037,
-      "y": 0.13947436663504037,
+      "x": 0.1180992661429529,
+      "y": 0.1180992661429529,
       "z": 1
     },
     "_quat": {
@@ -5581,7 +5581,7 @@
       "__id__": 152
     },
     "_enabled": true,
-    "reward": 13,
+    "reward": 20,
     "_id": "76qoiO9J5NDLVZXuj3hOoI"
   },
   {
@@ -5987,7 +5987,7 @@
       "__id__": 167
     },
     "_enabled": true,
-    "reward": 13,
+    "reward": 20,
     "_id": "e3FaFB78tDCaK6EmGFyn5i"
   },
   {
@@ -6393,7 +6393,7 @@
       "__id__": 182
     },
     "_enabled": true,
-    "reward": 13,
+    "reward": 20,
     "_id": "689kfI9BtIUo+ECUJ2yrIp"
   },
   {
@@ -6862,7 +6862,7 @@
       "__id__": 207
     },
     "_enabled": true,
-    "instantDamage": 100,
+    "instantDamage": 2,
     "radius": 500,
     "collidableGroups": [
       "player",
@@ -7800,7 +7800,7 @@
       "__id__": 239
     },
     "_enabled": true,
-    "instantDamage": 100,
+    "instantDamage": 2,
     "radius": 500,
     "collidableGroups": [
       "player",
@@ -8738,7 +8738,7 @@
       "__id__": 271
     },
     "_enabled": true,
-    "instantDamage": 100,
+    "instantDamage": 2,
     "radius": 500,
     "collidableGroups": [
       "player",
@@ -9676,7 +9676,7 @@
       "__id__": 303
     },
     "_enabled": true,
-    "instantDamage": 100,
+    "instantDamage": 2,
     "radius": 500,
     "collidableGroups": [
       "player",
@@ -14908,9 +14908,9 @@
     "player": {
       "__id__": 118
     },
-    "hpMultiplier": 1,
-    "fuelMultiplier": 1,
-    "distanceMultiplier": 1,
+    "hpMultiplier": 20,
+    "fuelMultiplier": 10,
+    "distanceMultiplier": 0.001,
     "enemyMultiplier": 1,
     "_id": "676C5UX29LLYZsMGAjO+bU"
   }

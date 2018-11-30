@@ -296,6 +296,7 @@
     },
     "_enabled": true,
     "maxHealth": 0,
+    "useUpgradeStats": false,
     "parentHealth": {
       "__id__": 9
     },
@@ -310,6 +311,7 @@
     },
     "_enabled": true,
     "maxHealth": 50,
+    "useUpgradeStats": false,
     "parentHealth": null,
     "_id": ""
   },
@@ -398,7 +400,7 @@
       "__id__": 1
     },
     "_enabled": true,
-    "reward": 13,
+    "reward": 20,
     "_id": ""
   },
   {

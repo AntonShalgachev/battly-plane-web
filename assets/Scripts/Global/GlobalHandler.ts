@@ -62,7 +62,7 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
 
     gameData: GameData = {
     	playerID : "Demo",
-    	playerCash : 1400,
+    	playerCash : 0,
     	playerBestDist : 0,
     	missionIndex : 0,
     	missionCheckPoints : [0, 0, 0],
@@ -70,18 +70,18 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
     		propeller : {
     			name: 			"Пропеллер",
 				description: 	"Сверхпрочные мифриловые сплавы позволяют выдержать большие фронтальные повреждения",
-				maxLvl: 		5,
+				maxLvl: 		4,
 				currentLvl: 	0,
-				pricePerLvl: 	[0, 100, 200, 300, 400, 500],
-				statPerLvl:		[100, 110, 130, 150, 200]
+				pricePerLvl: 	[0, 150, 300, 750, 1800],
+				statPerLvl:		[2, 3, 5, 9, 15]
     		},
     		tank : {
     			name: 			"Топливный бак",
 				description: 	"Больший бак позволяет пролететь большие расстояния",
-				maxLvl: 		3,
-				currentLvl: 	1,
-				pricePerLvl: 	[0, 100, 200, 300, 400, 500],
-				statPerLvl:		[15000, 16000, 18000, 20000, 25000]
+				maxLvl: 		1,
+				currentLvl: 	0,
+				pricePerLvl: 	[450, 1200],
+				statPerLvl:		[7500, 15000]
     		},
     		gun : {
     			name: 			"Пулемет",
