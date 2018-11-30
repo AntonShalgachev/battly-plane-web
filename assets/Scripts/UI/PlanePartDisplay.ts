@@ -59,7 +59,7 @@ export class PlanePartDisplay extends cc.Component {
     public readGlobalData(){
 		let data = GlobalHandler.GlobalHandler.getInstance().getPlanePartData(this.partType);
         if (!data) {
-            cc.warn(`No data for the part type ${this.partType}`);
+            cc.warn(`No data for the part type ${this.partType} - ${data}`);
             return;
         }
         

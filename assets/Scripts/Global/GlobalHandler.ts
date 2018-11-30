@@ -12,7 +12,7 @@ import * as Storage from "Storage";
 
 import GameplayEvents = require("GameplayEvents");
 import ScoreController from "ScoreController"
-import MathHelper 	   from "MathHelper"
+import MathHelper = require("MathHelper");
 
 export enum PlanePartTypes {
   none 		= 0,
@@ -118,8 +118,8 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
     clearSavedData: boolean = false;
     @property([cc.SpriteFrame])
     PlanePartIcons: cc.SpriteFrame[] = [];
-    @property([cc.Scene])
-    gameLevels: cc.Scene[] = [];
+    @property([cc.SceneAsset])
+    gameLevels: cc.SceneAsset[] = [];
 
     public static EVENT_NEED_SAVE: 		string = "Global.need_save";
     public static EVENT_NEED_LOAD: 		string = "Global.need_load";
@@ -163,10 +163,10 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
 		return this.data.missionIndex;
 	}
 
-	public getNextScene(): cc.Scene{
+	public getNextScene(): string{
 		if(this.gameLevels != null){
 			if(this.data.missionIndex < this.gameLevels.length){
-				return this.gameLevels[this.getMissionIndex];
+				return this.gameLevels[this.data.missionIndex].name;
 			}
 		}
 		return null;
@@ -251,19 +251,20 @@ export class GlobalHandler extends cc.Component implements Storage.ISerializable
 	
 	// Events callbacks 
 
-	onLvlPassed(e: GameplayEvents.GameOver){
-		let index = this.getMissionIndex;
-		this.getMissionIndex = MathHelper.clamp(this.getMissionIndex + 1, 0, this.gameLevels.length - 1);
-		if(index != this.getMissionIndex){
+	onLvlPassed(){
+		let index = this.data.missionIndex;
+		this.data.missionIndex = 
+			MathHelper.clamp(index + 1, 0, this.gameLevels.length - 1);
+		if(index != this.data.missionIndex){
 			this.data.playerBestDist = 0;
 		}
 	}
 
-	onNeedSave(e: GameplayEvents.GameOver){
+	onNeedSave(){
 		Storage.Storage.gameSave();
 	}
 
-	onNeedLoad(e: GameplayEvents.GameOver){
+	onNeedLoad(){
 		Storage.Storage.gameLoad();
 	}
 

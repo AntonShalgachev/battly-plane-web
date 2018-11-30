@@ -19,7 +19,15 @@ export default class SceneSelector extends cc.Component {
     	if(globalHandler != null){
 			let sceneTransition = globalHandler.getComponent(SceneTransition);
 			if(sceneTransition != null){
-				sceneTransition.gotoScene(scene);
+				if(scene != undefined){
+					sceneTransition.gotoScene(scene);
+				}
+				else{
+					let _scene = globalHandler.getNextScene();
+					if(_scene != null){
+						sceneTransition.gotoScene(_scene);
+					}
+				}
 			}
 		}
     }

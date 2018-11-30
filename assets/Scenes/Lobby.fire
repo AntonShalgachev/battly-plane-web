@@ -41,8 +41,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.5416970119752548,
-      "y": 0.5416970119752548,
+      "x": 0.825,
+      "y": 0.825,
       "z": 1
     },
     "_quat": {
@@ -1082,7 +1082,7 @@
     },
     "component": "SceneSelector",
     "handler": "buttonCallback",
-    "customEventData": "Flight"
+    "customEventData": ""
   },
   {
     "__type__": "60a56IC/h5Iqp2j5SMd8bKK",

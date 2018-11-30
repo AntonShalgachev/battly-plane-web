@@ -79,6 +79,7 @@ export class PlaneUpdateBehavior extends cc.Component {
 	    			GlobalHandler.GlobalHandler.EVENT_UPDATE_DATA,
 	    			new cc.Event("", false)
 	    		);
+                cc.systemEvent.emit(GlobalHandler.EVENT_NEED_SAVE);
 	    	}
 	    	else{
 	    		// TODO show wrong cash msg on label
