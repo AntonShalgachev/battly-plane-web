@@ -1,6 +1,6 @@
 const {ccclass, property} = cc._decorator;
 
-import ProjectileShooter from "Gameplay/ProjectileShooter"
+import ProjectileShooter from "ProjectileShooter"
 
 @ccclass
 export default class GunHeatBar extends cc.Component {

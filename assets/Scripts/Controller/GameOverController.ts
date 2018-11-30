@@ -1,7 +1,7 @@
 const {ccclass, property} = cc._decorator;
 
-import GameplayEvents = require("Events/GameplayEvents");
-import ScoreController from "Controller/ScoreController"
+import GameplayEvents = require("GameplayEvents");
+import ScoreController from "ScoreController"
 
 @ccclass
 export default class GameOverController extends cc.Component {

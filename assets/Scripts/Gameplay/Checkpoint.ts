@@ -1,6 +1,6 @@
 const {ccclass, property} = cc._decorator;
 
-import Events = require("Events/GameplayEvents");
+import Events = require("GameplayEvents");
 
 @ccclass
 export default class Checkpoint extends cc.Component {

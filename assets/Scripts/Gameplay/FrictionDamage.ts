@@ -1,8 +1,8 @@
 const {ccclass, property} = cc._decorator;
 
-import Health from "Gameplay/Health";
-import FrictionDamageable from "Gameplay/FrictionDamageable";
-import ScoreController from "Controller/ScoreController";
+import Health from "Health";
+import FrictionDamageable from "FrictionDamageable";
+import ScoreController from "ScoreController";
 
 class Data {
 	constructor(node: cc.Node) {

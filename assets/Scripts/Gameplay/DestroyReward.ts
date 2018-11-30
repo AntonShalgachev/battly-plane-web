@@ -1,6 +1,6 @@
 const {ccclass, property} = cc._decorator;
 
-import GameplayEvents = require("Events/GameplayEvents");
+import GameplayEvents = require("GameplayEvents");
 
 @ccclass
 export default class DestroyReward extends cc.Component {

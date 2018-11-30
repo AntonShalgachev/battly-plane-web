@@ -1,7 +1,7 @@
 const {ccclass, property} = cc._decorator;
 
-import Health from "Gameplay/Health";
-import GameplayEvents = require("Events/GameplayEvents");
+import Health from "Health";
+import GameplayEvents = require("GameplayEvents");
 
 @ccclass
 export default class OnCollisionDestroyer extends cc.Component {

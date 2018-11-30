@@ -10,8 +10,8 @@
 
 const {ccclass, property} = cc._decorator;
 
-import MathHelper = require("Utility/MathHelper");
-import {GlobalHandler, PlanePartTypes} from "Global/GlobalHandler";
+import MathHelper = require("MathHelper");
+import {GlobalHandler, PlanePartTypes} from "GlobalHandler";
 
 @ccclass
 export default class FuelTank extends cc.Component {

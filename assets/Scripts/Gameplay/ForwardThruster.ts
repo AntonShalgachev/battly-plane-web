@@ -10,11 +10,11 @@
 
 const {ccclass, property} = cc._decorator;
 
-import FuelTank from "Gameplay/FuelTank";
-import InputController from "Controller/InputController";
-import ScoreController from "Controller/ScoreController";
-import MathHelper = require("Utility/MathHelper");
-import Checkpoint from "Gameplay/Checkpoint"
+import FuelTank from "FuelTank";
+import InputController from "InputController";
+import ScoreController from "ScoreController";
+import MathHelper = require("MathHelper");
+import Checkpoint from "Checkpoint"
 
 @ccclass
 export default class ForwardThruster extends cc.Component {

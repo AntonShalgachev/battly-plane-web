@@ -8,10 +8,10 @@
 //  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import * as Storage from "Utility/Storage";
+import * as Storage from "Storage";
 
-import GameplayEvents = require("Events/GameplayEvents");
-import ScoreController from "Controller/ScoreController"
+import GameplayEvents = require("GameplayEvents");
+import ScoreController from "ScoreController"
 
 export enum PlanePartTypes {
   none 		= 0,

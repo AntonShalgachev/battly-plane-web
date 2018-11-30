@@ -1,6 +1,6 @@
 const {ccclass, property} = cc._decorator;
 
-import Health from "Gameplay/Health";
+import Health from "Health";
 
 @ccclass
 export default class NewClass extends cc.Component {

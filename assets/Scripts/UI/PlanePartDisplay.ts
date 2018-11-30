@@ -7,10 +7,10 @@
 // Learn life-cycle callbacks:
 //  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
-import {SkillBarBehavior} from "UI/Behaviors/SkillBarBehavior";
-import {PlanePartTypes} from "Global/GlobalHandler";
-import {PlaneUpdateBehavior} from "UI/Behaviors/PlaneUpdateBehavior";
-import * as GlobalHandler from "Global/GlobalHandler";
+import {SkillBarBehavior} from "SkillBarBehavior";
+import {PlanePartTypes} from "GlobalHandler";
+import {PlaneUpdateBehavior} from "PlaneUpdateBehavior";
+import * as GlobalHandler from "GlobalHandler";
 
 const {ccclass, property} = cc._decorator;
 

@@ -1,11 +1,11 @@
 const {ccclass, property} = cc._decorator;
 
-import DestroyReward from "Gameplay/DestroyReward"
-import GameplayEvents = require("Events/GameplayEvents");
+import DestroyReward from "DestroyReward"
+import GameplayEvents = require("GameplayEvents");
 
-import Health from "Gameplay/Health"
-import FuelTank from "Gameplay/FuelTank"
-import Checkpoint from "Gameplay/Checkpoint"
+import Health from "Health"
+import FuelTank from "FuelTank"
+import Checkpoint from "Checkpoint"
 
 @ccclass
 export default class ScoreController extends cc.Component {

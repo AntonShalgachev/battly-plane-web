@@ -10,9 +10,9 @@
 
 const {ccclass, property} = cc._decorator;
 
-import MathHelper = require("Utility/MathHelper");
-import ScoreController from "Controller/ScoreController";
-import GameplayEvents = require("Events/GameplayEvents");
+import MathHelper = require("MathHelper");
+import ScoreController from "ScoreController";
+import GameplayEvents = require("GameplayEvents");
 
 @ccclass
 export default class PlaneOrientation extends cc.Component {

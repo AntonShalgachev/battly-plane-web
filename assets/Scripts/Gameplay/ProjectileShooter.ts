@@ -10,8 +10,8 @@
 
 const {ccclass, property} = cc._decorator;
 
-import DebugHelper = require("Utility/DebugHelper");
-import MathHelper = require("Utility/MathHelper");
+import DebugHelper = require("DebugHelper");
+import MathHelper = require("MathHelper");
 
 @ccclass
 export default class ProjectileShooter extends cc.Component {

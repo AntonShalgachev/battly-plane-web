@@ -1,8 +1,8 @@
 const {ccclass, property} = cc._decorator;
 
-import InputController from "Controller/InputController";
-import ProjectileShooter from "Gameplay/ProjectileShooter";
-import ScoreController from "Controller/ScoreController";
+import InputController from "InputController";
+import ProjectileShooter from "ProjectileShooter";
+import ScoreController from "ScoreController";
 
 @ccclass
 export default class GunInputController extends cc.Component {

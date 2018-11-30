@@ -7,7 +7,7 @@
 // Learn life-cycle callbacks:
 //  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
-import {TwoStateBehavior} from "UI/Behaviors/TwoStateBehavior";
+import {TwoStateBehavior} from "TwoStateBehavior";
 
 const {ccclass, property} = cc._decorator;
 

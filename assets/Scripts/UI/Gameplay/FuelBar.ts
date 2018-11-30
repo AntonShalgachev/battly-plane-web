@@ -10,7 +10,7 @@
 
 const {ccclass, property} = cc._decorator;
 
-import FuelTank from "Gameplay/FuelTank";
+import FuelTank from "FuelTank";
 
 @ccclass
 export default class FuelBar extends cc.Component {
