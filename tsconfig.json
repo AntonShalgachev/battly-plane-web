@@ -7,7 +7,19 @@
     "skipLibCheck": true,
     "baseUrl": "./assets/Scripts",
     "outDir": "./temp/CompiledJs",
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "paths": {
+      "*": [
+        "*",
+        "Controller/*",
+        "Events/*",
+        "Gameplay/*",
+        "Global/*",
+        "UI/*",
+        "Utility/*",
+        "Visual/*"
+      ]
+    }
   },
   "exclude": [
     "node_modules",
