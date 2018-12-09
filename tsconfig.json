@@ -16,6 +16,8 @@
         "Gameplay/*",
         "Global/*",
         "UI/*",
+        "UI/Behaviors/*",
+        "UI/Gameplay/*",
         "Utility/*",
         "Visual/*"
       ]
